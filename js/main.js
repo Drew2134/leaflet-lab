@@ -55,7 +55,7 @@ function getData(map){
 
                     return L.marker(latlng, {icon: mapIcon}).bindPopup(popupContent);
                 }
-            }).addTo(map);
+            });
 
             var national = L.geoJson(response, {
                 filter: function(feature, layer) {
@@ -80,7 +80,10 @@ function getData(map){
 
                     return L.marker(latlng, {icon: mapIcon}).bindPopup(popupContent);
                 }
-            }).addTo(map);
+            });
+
+            national.addTo(map);
+            american.addTo(map);
 
             //NL button bind
             $("NL").click(function() {
