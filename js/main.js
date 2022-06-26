@@ -1,17 +1,22 @@
+//function to generate map and view with openstreetmap tile
 function createMap() {
+    //tie map to viewDiv in HTML. Set center to center of U.S. and zoom of 4
     const MAP = L.map('viewDiv', {
         center: [39.8283, -98.5795],
         zoom: 4
     });
 
+    //link to humanitarian style OSM tiles
     L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
         maxZoom: 19,
         attribution: "&copy OpenStreetMap"
     }).addTo(MAP);
 
+    //call function to get MLB data
     getData(MAP)
 };
 
+//function to pull MLB geoJSON data and style the points
 function getData(map){
     $.ajax("data/MLBStadiumsData.geojson", {
         dataType: "json",
@@ -27,18 +32,27 @@ function getData(map){
             
             L.geoJson(response, {
                 pointToLayer: function (feature, latlng){
-                    if (feature.properties.conference == "National League") {
+                    //generate icon image url based on team name
+                    var intIconUrl = "img/" + feature.properties.Team.replace(" ", "_") + ".png";
+                    var mapIcon = L.icon({
+                        iconUrl: intIconUrl
+                    });
+                    
+                    //determine marker color based on conference
+                    /*if (feature.properties.conference == "National League") {
                         geojsonMarkerOptions.fillColor = "blue"
                     }
                     else {
                         geojsonMarkerOptions.fillColor = "red"
-                    };
+                    };*/
 
+                    //generate popup content from feature properties
                     var popupContent;
                     for (const property in feature.properties) {
                         popupContent += property
                     }
-                    return L.circleMarker(latlng, geojsonMarkerOptions).bindPopup(popupContent);
+
+                    return L.marker(latlng, {icon: mapIcon}).bindPopup(popupContent);
                 }
             }).addTo(map);
         }
