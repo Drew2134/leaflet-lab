@@ -36,7 +36,7 @@ function getData(map){
                     var intIconUrl = "img/" + feature.properties.Team.replace(/ /g, "_") + ".png";
                     var mapIcon = L.icon({
                         iconUrl: intIconUrl,
-                        iconSize: [50, 50],
+                        iconSize: [this.width/2, this.height/2],
                         iconAnchor: [25, 25]
                     });
                     
