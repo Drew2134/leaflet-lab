@@ -86,10 +86,12 @@ function getData(map){
                 map.addLayer(national);
                 map.removeLayer(american);
             });
+            
             $("AL").click(function() {
                 map.addLayer(american);
                 map.removeLayer(national);
             });
+            
             $("MLB").click(function() {
                 map.addLayer(national);
                 map.addLayer(american);
