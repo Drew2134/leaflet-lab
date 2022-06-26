@@ -9,7 +9,7 @@ function createMap(){
     });
 
     //add OSM base tilelayer
-    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
     }).addTo(map);
 
@@ -20,7 +20,7 @@ function createMap(){
 //function to retrieve the data and place it on the map
 function getData(map){
     //load the data
-    $.ajax("data/MegaCities.geojson", {
+    $.ajax("data/MLBStadiumsData.geojson", {
         dataType: "json",
         success: function(response){
             var geojsonMarkerOptions = {

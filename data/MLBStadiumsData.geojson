@@ -1,0 +1,815 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "New York Yankees",
+          "yr2012": 2300,
+          "yr2013": 2500,
+          "yr2014": 3200,
+          "yr2015": 3400,
+          "yr2016": 3700,
+          "yr2017": 4000,
+          "yr2018": 4600,
+          "yr2019": 5000,
+          "yr2020": 5300,
+          "yr2021": 6000,
+          "stadium_name": "Yankee Stadium",
+          "capacity": 46537,
+          "conference": "American League",
+          "division": "East"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -73.9262,
+            40.8296
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Los Angeles Dodgers",
+          "yr2012": 1600,
+          "yr2013": 2000,
+          "yr2014": 2400,
+          "yr2015": 2500,
+          "yr2016": 2800,
+          "yr2017": 3000,
+          "yr2018": 3300,
+          "yr2019": 3400,
+          "yr2020": 3600,
+          "yr2021": 4075,
+          "stadium_name": "Dodger Stadium",
+          "capacity": 56000,
+          "conference": "National League",
+          "division": "West"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -118.24,
+            34.0739
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Boston Red Sox",
+          "yr2012": 1300,
+          "yr2013": 1500,
+          "yr2014": 2100,
+          "yr2015": 2300,
+          "yr2016": 2700,
+          "yr2017": 2800,
+          "yr2018": 3200,
+          "yr2019": 3300,
+          "yr2020": 3500,
+          "yr2021": 3900,
+          "stadium_name": "Fenway Park",
+          "capacity": 37755,
+          "conference": "American League",
+          "division": "East"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -71.0972,
+            42.3467
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Chicago Cubs",
+          "yr2012": 1000,
+          "yr2013": 1200,
+          "yr2014": 1800,
+          "yr2015": 2200,
+          "yr2016": 2700,
+          "yr2017": 2900,
+          "yr2018": 3100,
+          "yr2019": 3200,
+          "yr2020": 3400,
+          "yr2021": 3800,
+          "stadium_name": "Wrigley Field",
+          "capacity": 41649,
+          "conference": "National League",
+          "division": "Central"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -87.6553,
+            41.9484
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "San Francisco Giants",
+          "yr2012": 786,
+          "yr2013": 1000,
+          "yr2014": 2000,
+          "yr2015": 2300,
+          "yr2016": 2700,
+          "yr2017": 2900,
+          "yr2018": 3000,
+          "yr2019": 3100,
+          "yr2020": 3200,
+          "yr2021": 3500,
+          "stadium_name": "Oracle Park",
+          "capacity": 41265,
+          "conference": "National League",
+          "division": "West"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3893,
+            37.7786
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "New York Mets",
+          "yr2012": 811,
+          "yr2013": 800,
+          "yr2014": 1400,
+          "yr2015": 1700,
+          "yr2016": 2000,
+          "yr2017": 2100,
+          "yr2018": 2300,
+          "yr2019": 2400,
+          "yr2020": 2500,
+          "yr2021": 2650,
+          "stadium_name": "Citi Field",
+          "capacity": 41922,
+          "conference": "National League",
+          "division": "East"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -73.8458,
+            40.7571
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "St Louis Cardinals",
+          "yr2012": 716,
+          "yr2013": 820,
+          "yr2014": 1400,
+          "yr2015": 1600,
+          "yr2016": 1800,
+          "yr2017": 1900,
+          "yr2018": 2100,
+          "yr2019": 2200,
+          "yr2020": 2200,
+          "yr2021": 2450,
+          "stadium_name": "Busch Stadium",
+          "capacity": 45494,
+          "conference": "National League",
+          "division": "Central"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -90.1928,
+            38.6226
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Philadelphia Phillies",
+          "yr2012": 893,
+          "yr2013": 975,
+          "yr2014": 1300,
+          "yr2015": 1200,
+          "yr2016": 1700,
+          "yr2017": 1700,
+          "yr2018": 1900,
+          "yr2019": 2000,
+          "yr2020": 2100,
+          "yr2021": 2300,
+          "stadium_name": "Citizens Bank Park",
+          "capacity": 42792,
+          "conference": "National League",
+          "division": "East"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -75.1665,
+            39.9061
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Los Angeles Angels",
+          "yr2012": 718,
+          "yr2013": 775,
+          "yr2014": 1300,
+          "yr2015": 1300,
+          "yr2016": 1800,
+          "yr2017": 1800,
+          "yr2018": 1900,
+          "yr2019": 2000,
+          "yr2020": 2000,
+          "yr2021": 2200,
+          "stadium_name": "Angel Stadium",
+          "capacity": 45517,
+          "conference": "American League",
+          "division": "West"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -117.8827,
+            33.8003
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Atlanta Braves",
+          "yr2012": 629,
+          "yr2013": 730,
+          "yr2014": 1200,
+          "yr2015": 1200,
+          "yr2016": 1500,
+          "yr2017": 1600,
+          "yr2018": 1700,
+          "yr2019": 1800,
+          "yr2020": 1900,
+          "yr2021": 2100,
+          "stadium_name": "Truist Park",
+          "capacity": 41084,
+          "conference": "National League",
+          "division": "East"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -84.4684,
+            33.8911
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Texas Rangers",
+          "yr2012": 764,
+          "yr2013": 825,
+          "yr2014": 1200,
+          "yr2015": 1200,
+          "yr2016": 1600,
+          "yr2017": 1600,
+          "yr2018": 1700,
+          "yr2019": 1800,
+          "yr2020": 1800,
+          "yr2021": 2050,
+          "stadium_name": "Globe Life Field",
+          "capacity": 40300,
+          "conference": "American League",
+          "division": "West"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -97.0838,
+            32.7475
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Washington Nationals",
+          "yr2012": 631,
+          "yr2013": 700,
+          "yr2014": 1300,
+          "yr2015": 1300,
+          "yr2016": 1600,
+          "yr2017": 1700,
+          "yr2018": 1800,
+          "yr2019": 1900,
+          "yr2020": 1900,
+          "yr2021": 2000,
+          "stadium_name": "Nationals Park",
+          "capacity": 41339,
+          "conference": "National League",
+          "division": "East"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -77.0074,
+            38.873
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Houston Astros",
+          "yr2012": 626,
+          "yr2013": 530,
+          "yr2014": 800,
+          "yr2015": 1100,
+          "yr2016": 1500,
+          "yr2017": 1700,
+          "yr2018": 1800,
+          "yr2019": 1900,
+          "yr2020": 1900,
+          "yr2021": 1980,
+          "stadium_name": "Minute Maid Park",
+          "capacity": 41168,
+          "conference": "American League",
+          "division": "West"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -95.3555,
+            29.7573
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Toronto Blue Jays",
+          "yr2012": 568,
+          "yr2013": 610,
+          "yr2014": 870,
+          "yr2015": 900,
+          "yr2016": 1300,
+          "yr2017": 1400,
+          "yr2018": 1500,
+          "yr2019": 1600,
+          "yr2020": 1700,
+          "yr2021": 1780,
+          "stadium_name": "Rogers Centre",
+          "capacity": 49286,
+          "conference": "American League",
+          "division": "East"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -79.3891,
+            43.6418
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Chicago White Sox",
+          "yr2012": 692,
+          "yr2013": 695,
+          "yr2014": 975,
+          "yr2015": 1100,
+          "yr2016": 1400,
+          "yr2017": 1500,
+          "yr2018": 1600,
+          "yr2019": 1700,
+          "yr2020": 1700,
+          "yr2021": 1760,
+          "stadium_name": "Guaranteed Rate Field",
+          "capacity": 40615,
+          "conference": "American League",
+          "division": "Central"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -87.6338,
+            41.8299
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Seattle Mariners",
+          "yr2012": 644,
+          "yr2013": 710,
+          "yr2014": 1100,
+          "yr2015": 1200,
+          "yr2016": 1400,
+          "yr2017": 1500,
+          "yr2018": 1600,
+          "yr2019": 1600,
+          "yr2020": 1600,
+          "yr2021": 1700,
+          "stadium_name": "T-Mobile Park",
+          "capacity": 47929,
+          "conference": "American League",
+          "division": "West"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.3325,
+            47.5913
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "San Diego Padres",
+          "yr2012": 600,
+          "yr2013": 615,
+          "yr2014": 890,
+          "yr2015": 890,
+          "yr2016": 1100,
+          "yr2017": 1300,
+          "yr2018": 1400,
+          "yr2019": 1500,
+          "yr2020": 1500,
+          "yr2021": 1575,
+          "stadium_name": "Petco Park",
+          "capacity": 40209,
+          "conference": "National League",
+          "division": "West"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -117.1567,
+            32.7073
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Detroit Tigers",
+          "yr2012": 643,
+          "yr2013": 680,
+          "yr2014": 1100,
+          "yr2015": 1200,
+          "yr2016": 1200,
+          "yr2017": 1200,
+          "yr2018": 1300,
+          "yr2019": 1300,
+          "yr2020": 1300,
+          "yr2021": 1400,
+          "stadium_name": "Comerica Park",
+          "capacity": 41083,
+          "conference": "American League",
+          "division": "Central"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -83.0485,
+            42.339
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Minnesota Twins",
+          "yr2012": 578,
+          "yr2013": 605,
+          "yr2014": 895,
+          "yr2015": 910,
+          "yr2016": 1000,
+          "yr2017": 1200,
+          "yr2018": 1200,
+          "yr2019": 1300,
+          "yr2020": 1300,
+          "yr2021": 1390,
+          "stadium_name": "Target Field",
+          "capacity": 38544,
+          "conference": "American League",
+          "division": "Central"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -93.2776,
+            44.9817
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Colorado Rockies",
+          "yr2012": 537,
+          "yr2013": 575,
+          "yr2014": 855,
+          "yr2015": 860,
+          "yr2016": 1000,
+          "yr2017": 1100,
+          "yr2018": 1200,
+          "yr2019": 1300,
+          "yr2020": 1300,
+          "yr2021": 1385,
+          "stadium_name": "Coors Field",
+          "capacity": 50144,
+          "conference": "National League",
+          "division": "West"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -104.9942,
+            39.7559
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Arizona Diamondbacks",
+          "yr2012": 584,
+          "yr2013": 585,
+          "yr2014": 840,
+          "yr2015": 925,
+          "yr2016": 1200,
+          "yr2017": 1200,
+          "yr2018": 1300,
+          "yr2019": 1300,
+          "yr2020": 1300,
+          "yr2021": 1380,
+          "stadium_name": "Chase Field",
+          "capacity": 48405,
+          "conference": "National League",
+          "division": "West"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -112.0667,
+            33.4453
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Baltimore Orioles",
+          "yr2012": 618,
+          "yr2013": 620,
+          "yr2014": 1000,
+          "yr2015": 1000,
+          "yr2016": 1200,
+          "yr2017": 1200,
+          "yr2018": 1300,
+          "yr2019": 1400,
+          "yr2020": 1400,
+          "yr2021": 1375,
+          "stadium_name": "Camden Yards",
+          "capacity": 45971,
+          "conference": "American League",
+          "division": "East"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -76.6217,
+            39.2838
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Pittsburgh Pirates",
+          "yr2012": 479,
+          "yr2013": 572,
+          "yr2014": 900,
+          "yr2015": 975,
+          "yr2016": 1300,
+          "yr2017": 1300,
+          "yr2018": 1300,
+          "yr2019": 1300,
+          "yr2020": 1300,
+          "yr2021": 1320,
+          "stadium_name": "PNC Park",
+          "capacity": 38747,
+          "conference": "National League",
+          "division": "Central"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -80.0057,
+            40.4469
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Cleveland Guardians",
+          "yr2012": 559,
+          "yr2013": 570,
+          "yr2014": 825,
+          "yr2015": 800,
+          "yr2016": 920,
+          "yr2017": 1000,
+          "yr2018": 1200,
+          "yr2019": 1200,
+          "yr2020": 1200,
+          "yr2021": 1300,
+          "stadium_name": "Progressive Field",
+          "capacity": 34830,
+          "conference": "American League",
+          "division": "Central"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -81.6852,
+            41.4962
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Milwaukee Brewers",
+          "yr2012": 562,
+          "yr2013": 565,
+          "yr2014": 875,
+          "yr2015": 875,
+          "yr2016": 925,
+          "yr2017": 1000,
+          "yr2018": 1200,
+          "yr2019": 1200,
+          "yr2020": 1200,
+          "yr2021": 1280,
+          "stadium_name": "American Family Field",
+          "capacity": 41900,
+          "conference": "National League",
+          "division": "Central"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -87.9712,
+            43.028
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Cincinnati Reds",
+          "yr2012": 546,
+          "yr2013": 600,
+          "yr2014": 885,
+          "yr2015": 905,
+          "yr2016": 915,
+          "yr2017": 1000,
+          "yr2018": 1100,
+          "yr2019": 1100,
+          "yr2020": 1100,
+          "yr2021": 1190,
+          "stadium_name": "Great American Ball Park",
+          "capacity": 42319,
+          "conference": "National League",
+          "division": "Central"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -84.5071,
+            39.0974
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Oakland Athletics",
+          "yr2012": 468,
+          "yr2013": 495,
+          "yr2014": 725,
+          "yr2015": 725,
+          "yr2016": 880,
+          "yr2017": 1000,
+          "yr2018": 1100,
+          "yr2019": 1100,
+          "yr2020": 1100,
+          "yr2021": 1180,
+          "stadium_name": "RingCentral Coliseum",
+          "capacity": 46847,
+          "conference": "American League",
+          "division": "West"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -122.2005,
+            37.7516
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Kansas City Royals",
+          "yr2012": 457,
+          "yr2013": 490,
+          "yr2014": 700,
+          "yr2015": 865,
+          "yr2016": 950,
+          "yr2017": 1000,
+          "yr2018": 1000,
+          "yr2019": 1000,
+          "yr2020": 1100,
+          "yr2021": 1110,
+          "stadium_name": "Kauffman Stadium",
+          "capacity": 37903,
+          "conference": "American League",
+          "division": "Central"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -94.4803,
+            39.0517
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Tampa Bay Rays",
+          "yr2012": 451,
+          "yr2013": 485,
+          "yr2014": 625,
+          "yr2015": 650,
+          "yr2016": 825,
+          "yr2017": 900,
+          "yr2018": 1000,
+          "yr2019": 1100,
+          "yr2020": 1100,
+          "yr2021": 1100,
+          "stadium_name": "Tropicana Field",
+          "capacity": 25000,
+          "conference": "American League",
+          "division": "East"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -82.6534,
+            27.7682
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "Team": "Miami Marlins",
+          "yr2012": 520,
+          "yr2013": 500,
+          "yr2014": 650,
+          "yr2015": 675,
+          "yr2016": 940,
+          "yr2017": 1000,
+          "yr2018": 1000,
+          "yr2019": 980,
+          "yr2020": 990,
+          "yr2021": 990,
+          "stadium_name": "LoanDepot Park",
+          "capacity": 36742,
+          "conference": "National League",
+          "division": "East"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -80.2196,
+            25.7781
+          ]
+        }
+      }
+    ]
+  }
