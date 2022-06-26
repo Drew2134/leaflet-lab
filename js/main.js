@@ -89,7 +89,7 @@ function getData(map){
 };
 
 //NL button bind
-$("NL").click(function() {
+$("NL").onclick(function() {
     map.addLayer(national);
     map.removeLayer(american);
 });
