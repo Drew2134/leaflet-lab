@@ -5,7 +5,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy OpenStreetMap'
 }).addTo(MAP)
 
-$.ajax("data/MLDStadiumsData.geojson", {
+$.ajax("data/MLBStadiumsData.geojson", {
     dataType: "json",
     success: function(response) {
         L.geoJson(response).addTo(MAP);
