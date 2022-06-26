@@ -30,33 +30,70 @@ function getData(map){
                 fillOpacity: 0.8
             };
             
-            L.geoJson(response, {
-                pointToLayer: function (feature, latlng){
+            var allMLB = L.geoJson(response);
+
+            var american = L.geoJson(response, {
+                filter: function(feature, layer) {
+                    return feature.properties.conference == "American League";
+                },
+                pointToLayer: function(feature, latlng) {
                     //generate icon image url based on team name
-                    var intIconUrl = "img/" + feature.properties.Team.replace(/ /g, "_") + ".png";
-                    var mapIcon = L.icon({
+                    let intIconUrl = "img/" + feature.properties.Team.replace(/ /g, "_") + ".png";
+                    
+                    //create map icons using generated icon url
+                    let mapIcon = L.icon({
                         iconUrl: intIconUrl,
                         iconSize: [60, 60],
                         iconAnchor: [25, 25]
                     });
-                    
-                    //determine marker color based on conference
-                    /*if (feature.properties.conference == "National League") {
-                        geojsonMarkerOptions.fillColor = "blue"
-                    }
-                    else {
-                        geojsonMarkerOptions.fillColor = "red"
-                    };*/
 
                     //generate popup content from feature properties
-                    var popupContent;
+                    let popupContent;
                     for (const property in feature.properties) {
                         popupContent += property
                     }
 
                     return L.marker(latlng, {icon: mapIcon}).bindPopup(popupContent);
                 }
-            }).addTo(map);
+            }).addTo(MAP);
+
+            var national = L.geoJson(response, {
+                filter: function(feature, layer) {
+                    return feature.properties.conference == "National League";
+                },
+                pointToLayer: function(feature, latlng) {
+                    //generate icon image url based on team name
+                    let intIconUrl = "img/" + feature.properties.Team.replace(/ /g, "_") + ".png";
+                    
+                    //create map icons using generated icon url
+                    let mapIcon = L.icon({
+                        iconUrl: intIconUrl,
+                        iconSize: [60, 60],
+                        iconAnchor: [25, 25]
+                    });
+
+                    //generate popup content from feature properties
+                    let popupContent;
+                    for (const property in feature.properties) {
+                        popupContent += property
+                    }
+
+                    return L.marker(latlng, {icon: mapIcon}).bindPopup(popupContent);
+                }
+            }).addTo(MAP);
+
+            $("NL").click(function() {
+                map.addLayer(national);
+                map.removeLayer(american);
+            });
+            $("AL").click(function() {
+                map.addLayer(american);
+                map.removeLayer(national);
+            });
+            $("MLB").click(function() {
+                map.addLayer(national);
+                map.addLayer(american);
+            });
         }
     });
 };
