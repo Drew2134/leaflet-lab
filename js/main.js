@@ -1,7 +1,7 @@
 //function to generate map and view with openstreetmap tile
 function createMap() {
     //tie map to viewDiv in HTML. Set center to center of U.S. and zoom of 4
-    const MAP = L.map('viewDiv', {
+    var map = L.map('viewDiv', {
         center: [39.8283, -98.5795],
         zoom: 4
     });
@@ -10,10 +10,10 @@ function createMap() {
     L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
         maxZoom: 19,
         attribution: "&copy OpenStreetMap"
-    }).addTo(MAP);
+    }).addTo(map);
 
     //call function to get MLB data
-    getData(MAP)
+    getData(map)
 };
 
 //function to pull MLB geoJSON data and style the points
@@ -55,7 +55,7 @@ function getData(map){
 
                     return L.marker(latlng, {icon: mapIcon}).bindPopup(popupContent);
                 }
-            }).addTo(MAP);
+            }).addTo(map);
 
             var national = L.geoJson(response, {
                 filter: function(feature, layer) {
@@ -80,7 +80,7 @@ function getData(map){
 
                     return L.marker(latlng, {icon: mapIcon}).bindPopup(popupContent);
                 }
-            }).addTo(MAP);
+            }).addTo(map);
 
             $("NL").click(function() {
                 map.addLayer(national);
