@@ -28,13 +28,7 @@ function getData(map){
             L.geoJson(response, {
                 pointToLayer: function (feature, latlng){
                     return L.circleMarker(latlng, geojsonMarkerOptions);
-                },
-                style: function(feature) {
-                    switch (feature.properties.conference) {
-                        case "American League": return {color: "red"};
-                        case "National League": return {color: "blue"};
-                    }
-                } 
+                }
             }).addTo(map);
         }
     });
