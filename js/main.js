@@ -35,7 +35,9 @@ function getData(map){
                     //generate icon image url based on team name
                     var intIconUrl = "img/" + feature.properties.Team.replace(" ", "_") + ".png";
                     var mapIcon = L.icon({
-                        iconUrl: intIconUrl
+                        iconUrl: intIconUrl,
+                        iconSize: [50, 50],
+                        iconAnchor: [25, 25]
                     });
                     
                     //determine marker color based on conference
