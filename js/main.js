@@ -83,28 +83,27 @@ function getData(map){
             });
 
             national.addTo(map);
-            
+
             american.addTo(map);
-
-            //NL button bind
-            $("NL").click(function() {
-                map.addLayer(national);
-                map.removeLayer(american);
-            });
-
-            //AL button bind
-            $("AL").click(function() {
-                map.addLayer(american);
-                map.removeLayer(national);
-            });
-            
-            //MLB button bind
-            $("MLB").click(function() {
-                map.addLayer(national);
-                map.addLayer(american);
-            });
         }
     });
 };
 
+//NL button bind
+$("NL").click(function() {
+    map.addLayer(national);
+    map.removeLayer(american);
+});
+
+//AL button bind
+$("AL").click(function() {
+    map.addLayer(american);
+    map.removeLayer(national);
+});
+
+//MLB button bind
+$("MLB").click(function() {
+    map.addLayer(national);
+    map.addLayer(american);
+});
 $(document).ready(createMap);
