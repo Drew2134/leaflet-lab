@@ -95,7 +95,7 @@ $("NL").onclick(function() {
 });
 
 //AL button bind
-$("AL").click(function() {
+$("AL").onclick(function() {
     map.addLayer(american);
     map.removeLayer(national);
 });
