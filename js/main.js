@@ -16,30 +16,24 @@ function getData(map){
     $.ajax("data/MLBStadiumsData.geojson", {
         dataType: "json",
         success: function(response){
+            var geojsonMarkerOptions = {
+                radius: 8,
+                fillColor: none,
+                color: "#000",
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.8
+            };
             
             L.geoJson(response, {
                 pointToLayer: function (feature, latlng){
                     if (feature.properties.conference == "National League") {
-                        var geojsonMarkerOptions = {
-                            radius: 8,
-                            fillColor: "blue",
-                            color: "#000",
-                            weight: 1,
-                            opacity: 1,
-                            fillOpacity: 0.8
-                        };
+                        geojsonMarkerOptions.fillColor = "blue"
                     }
                     else {
-                        var geojsonMarkerOptions = {
-                            radius: 8,
-                            fillColor: "red",
-                            color: "#000",
-                            weight: 1,
-                            opacity: 1,
-                            fillOpacity: 0.8
-                        };
+                        geojsonMarkerOptions.fillColor = "red"
                     };
-                    return L.circleMarker(latlng, geojsonMarkerOptions);
+                    return L.circleMarker(latlng, geojsonMarkerOptions).bindPopup("I am a popup");
                 }
             }).addTo(map);
         }
