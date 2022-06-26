@@ -33,9 +33,12 @@ function getData(map){
                     else {
                         geojsonMarkerOptions.fillColor = "red"
                     };
-                    return L.circleMarker(latlng, geojsonMarkerOptions).bindPopup(
-                        "<table><tr><th>Year</th><th>Franchise Value</th></tr></table>"
-                    );
+
+                    var popupContent;
+                    for (const property in feature) {
+                        popupContent += property + "/n"
+                    }
+                    return L.circleMarker(latlng, geojsonMarkerOptions).bindPopup(popupContent);
                 }
             }).addTo(map);
         }
