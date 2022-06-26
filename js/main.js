@@ -33,7 +33,7 @@ function getData(map){
             L.geoJson(response, {
                 pointToLayer: function (feature, latlng){
                     //generate icon image url based on team name
-                    var intIconUrl = "img/" + feature.properties.Team.replace(" ", "_") + ".png";
+                    var intIconUrl = "img/" + feature.properties.Team.replace(/ /g, "_") + ".png";
                     var mapIcon = L.icon({
                         iconUrl: intIconUrl,
                         iconSize: [50, 50],
