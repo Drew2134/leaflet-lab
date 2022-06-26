@@ -83,6 +83,7 @@ function getData(map){
             });
 
             national.addTo(map);
+            
             american.addTo(map);
 
             //NL button bind
