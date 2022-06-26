@@ -35,7 +35,7 @@ function getData(map){
                     };
 
                     var popupContent;
-                    for (const property in feature) {
+                    for (const property in feature.properties) {
                         popupContent += property + "/n"
                     }
                     return L.circleMarker(latlng, geojsonMarkerOptions).bindPopup(popupContent);
