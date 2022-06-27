@@ -22,7 +22,7 @@ function pointToLayer(feature, latlng) {
     var team = feature.properties.Team;
     var teamLogo = "img/" + team.replace(/ /g, "_") + ".png";
     //build html content for popup
-    var popupContent = "<img src=" + teamLogo + " style='width:50px; height:50px;' alt='" + team +" logo'>\n<table><tr><th>Year</th><th>Value</th></tr></table>";
+    var popupContent = "<h3>" + team + "</h3><img src=" + teamLogo + " style='width:75px; height:75px;' alt='" + team +" logo'>\n<table><tr><th>Year</th><th>Value</th></tr></table>";
 
     //bind popup event to marker
     teamMarker.bindPopup(popupContent, {
