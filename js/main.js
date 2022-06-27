@@ -24,7 +24,18 @@ function pointToLayer(feature, latlng) {
     var popupContent = "<img src=" + teamLogo + ">\n<table><tr><th>Year</th><th>Value</th></tr></table>";
 
     //bind popup event to marker
-    teamMarker.bindPopup(popupContent);
+    teamMarker.bindPopup(popupContent, {
+        offset: new L.Point(0, -geojsonMarkerOptions.radius)
+    });
+
+    teamMarker.on({
+        mouseover: function() {
+            this.openPopup();
+        },
+        mouseout: function() {
+            this.closePopup();
+        }
+    });
 
     return teamMarker;
 }
