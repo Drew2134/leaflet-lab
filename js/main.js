@@ -1,16 +1,10 @@
 //function to add circle markers to map
 function createPropSymbols(data, map) {
-    var markerColor;
-
-    if (data.feature.properties.conference == "National League") {
-        markerColor = "blue";
-    } else {
-        markerColor = "red";
-    };
+    var attribute = "yr2021";
 
     var geojsonMarkerOptions = {
         radius: 8,
-        fillColor: markerColor,
+        fillColor: "#ff7800",
         color: "#000",
         weight: 1,
         opacity: 1,
@@ -19,6 +13,10 @@ function createPropSymbols(data, map) {
 
     L.geoJson(data, {
         pointToLayer: function (feature, latlng) {
+            var attValue = Number(feature.properties[attribute]);
+
+            console.log(feature.properties, attValue);
+
             return L.circleMarker(latlng, geojsonMarkerOptions);
         }
     }).addTo(map);
@@ -55,3 +53,5 @@ function createMap() {
 };
 
 $(document).ready(createMap);
+
+//CREDIT FOR TEAM LOGOS: SportsLogos.net
