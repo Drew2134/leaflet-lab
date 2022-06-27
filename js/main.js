@@ -21,9 +21,14 @@ function pointToLayer(feature, latlng) {
 
     var team = feature.properties.Team;
     var teamLogo = "img/" + team.replace(/ /g, "_") + ".png";
+
     //build html content for popup
     var popupContent = "<p>" + team + "</p>";
-    var panelContent = "<img src='" + teamLogo + "' atl=" + team + " logo style='width:75px; height:75px;>"
+
+    //build html content for info panel
+    var panelTable;
+    var panelContent = "<img src='" + teamLogo + "' atl=" + team + " logo style='width:75px; height:75px;>" + panelTable;
+    
     //bind popup event to marker
     teamMarker.bindPopup(popupContent, {
         offset: new L.Point(0, -geojsonMarkerOptions.radius),
