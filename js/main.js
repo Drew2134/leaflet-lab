@@ -26,7 +26,8 @@ function pointToLayer(feature, latlng) {
 
     //bind popup event to marker
     teamMarker.bindPopup(popupContent, {
-        offset: new L.Point(0, -geojsonMarkerOptions.radius)
+        offset: new L.Point(0, -geojsonMarkerOptions.radius),
+        maxWidth: "auto"
     });
 
     teamMarker.on({
