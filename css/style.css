@@ -45,3 +45,10 @@ html, body {
     border: 5px;
     border-style: groove;
 }
+
+#panel {
+    width: 16%;
+    padding: 20px;
+    display: inline-block;
+    vertical-align: top;
+}
