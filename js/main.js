@@ -1,6 +1,6 @@
 //function to calculate proportional symbol radius
 function calcPropRadius(attValue) {
-    var scaleFactor = 50;
+    var scaleFactor = 1;
     var area = attValue * scaleFactor;
     var radius = Math.sqrt(area/Math.PI);
 
