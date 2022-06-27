@@ -45,11 +45,12 @@ html, body {
     margin: 0 15px 5px 15px;
     border: 5px;
     border-style: groove;
+    float: left;
 }
 
 #panel {
     width: 15%;
     padding: 0 15px 5px 15px;
-    display: inline-block;
+    float: left;
     vertical-align: top;
 }
