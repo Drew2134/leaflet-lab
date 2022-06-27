@@ -1,3 +1,41 @@
+//function to add circle markers to map
+function createPropSymbols(data, map) {
+    var markerColor;
+
+    if (data.properties.conference == "National League") {
+        markerColor = "blue";
+    } else {
+        markerColor = "red";
+    };
+
+    var geojsonMarkerOptions = {
+        radius: 8,
+        fillColor: markerColor,
+        color: "#000",
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.8
+    };
+
+    L.geoJson(data, {
+        pointToLayer: function (feature, latlng) {
+            return L.circleMarker(latlng, geojsonMarkerOptions);
+        }
+    }).addTo(map);
+};
+
+//function to import MLB geoJSON data
+function getData(map){
+    $.ajax("data/MLBStadiumsData.geojson", {
+        dataType: "json",
+        success: function(response){
+
+            //call function to create proportional symbols
+            createPropSymbols(response, map);
+        }
+    });
+};
+
 //function to generate map and view with openstreetmap tile
 function createMap() {
     //tie map to viewDiv in HTML. Set center to center of U.S. and zoom of 4
@@ -14,45 +52,6 @@ function createMap() {
 
     //call function to get MLB data
     getData(MAP)
-};
-
-//function to pull MLB geoJSON data and style the points
-function getData(map){
-    $.ajax("data/MLBStadiumsData.geojson", {
-        dataType: "json",
-        success: function(response){
-            var geojsonMarkerOptions = {
-                radius: 8,
-                fillColor: "white",
-                color: "#000",
-                weight: 1,
-                opacity: 1,
-                fillOpacity: 0.8
-            };
-            
-            var allMLB = L.geoJson(response, {
-                pointToLayer: function (feature, latlng){
-                    //generate icon image url based on team name
-                    var intIconUrl = "img/" + feature.properties.Team.replace(/ /g, "_") + ".png";
-                    
-                    //create map icons using generated icon url
-                    var mapIcon = L.icon({
-                        iconUrl: intIconUrl,
-                        iconSize: [60, 60],
-                        iconAnchor: [25, 25]
-                    });
-
-                    //generate popup content from feature properties
-                    var popupContent;
-                    for (const property in feature.properties) {
-                        popupContent += property
-                    }
-
-                    return L.marker(latlng, {icon: mapIcon}).bindPopup(popupContent);
-                }
-            }).addTo(map);
-        }
-    });
 };
 
 $(document).ready(createMap);
