@@ -1,3 +1,12 @@
+//function to calculate proportional symbol radius
+function calcPropRadius(attValue) {
+    var scaleFactor = 50;
+    var area = attValue * scaleFactor;
+    var radius = Math.sqrt(area/Math.PI);
+
+    return radius;
+};
+
 //function to add circle markers to map
 function createPropSymbols(data, map) {
     var attribute = "yr2021";
@@ -14,10 +23,16 @@ function createPropSymbols(data, map) {
     L.geoJson(data, {
         pointToLayer: function (feature, latlng) {
             var attValue = Number(feature.properties[attribute]);
+            if (feature.properties.conference == "National League") {
+                geojsonMarkerOptions.fillColor = "blue";
+            } else {
+                geojsonMarkerOptions.fillColor = "red";
+            };
 
-            console.log(feature.properties, attValue);
+            geojsonMarkerOptions.radius = calcPropRadius(attValue);
 
-            return L.circleMarker(latlng, geojsonMarkerOptions);
+            var teamMarker = L.circleMarker(latlng, geojsonMarkerOptions);
+            return teamMarker;
         }
     }).addTo(map);
 };
