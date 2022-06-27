@@ -2,6 +2,7 @@
 function pointToLayer(feature, latlng) {
     var attribute = "yr2021";
 
+    //generic marker options consistent to every feature
     var geojsonMarkerOptions = {
         color: "#000",
         weight: 1,
@@ -11,18 +12,24 @@ function pointToLayer(feature, latlng) {
 
     var attValue = Number(feature.properties[attribute]);
 
+    //call radius and color functions to populate marker options
     geojsonMarkerOptions.radius = calcPropRadius(attValue);
-    geojsonMarkerOptions.color = calcSymbolColor(feature.properties.conference)
+    geojsonMarkerOptions.fillColor = calcSymbolColor(feature.properties.conference)
 
+    //create marker with calculated options
     var teamMarker = L.circleMarker(latlng, geojsonMarkerOptions);
 
-    var popupContent;
+    var teamLogo = "img/" + feature.properties.Team.replace(/ /g, "_") + ".png";
+    //build html content for popup
+    var popupContent = "<img src=teamLogo>";
 
+    //bind popup event to marker
     teamMarker.bindPopup(popupContent);
-    
+
     return teamMarker;
 }
 
+//function to grab the matching color based on team conference
 function calcSymbolColor(conference) {
     switch(conference) {
         case "National League":
