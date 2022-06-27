@@ -1,3 +1,37 @@
+//function to convert default point markers to circle markers
+function pointToLayer(feature, latlng) {
+    var attribute = "yr2021";
+
+    var geojsonMarkerOptions = {
+        color: "#000",
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.8
+    };
+
+    var attValue = Number(feature.properties[attribute]);
+
+    geojsonMarkerOptions.radius = calcPropRadius(attValue);
+    geojsonMarkerOptions.color = calcSymbolColor(feature.properties.conference)
+
+    var teamMarker = L.circleMarker(latlng, geojsonMarkerOptions);
+
+    var popupContent;
+
+    teamMarker.bindPopup(popupContent);
+    
+    return teamMarker;
+}
+
+function calcSymbolColor(conference) {
+    switch(conference) {
+        case "National League":
+            return "blue";
+        case "American League":
+            return "red";
+    };
+};
+
 //function to calculate proportional symbol radius
 function calcPropRadius(attValue) {
     var scaleFactor = .5;
@@ -9,31 +43,8 @@ function calcPropRadius(attValue) {
 
 //function to add circle markers to map
 function createPropSymbols(data, map) {
-    var attribute = "yr2021";
-
-    var geojsonMarkerOptions = {
-        radius: 8,
-        fillColor: "#ff7800",
-        color: "#000",
-        weight: 1,
-        opacity: 1,
-        fillOpacity: 0.8
-    };
-
     L.geoJson(data, {
-        pointToLayer: function (feature, latlng) {
-            var attValue = Number(feature.properties[attribute]);
-            if (feature.properties.conference == "National League") {
-                geojsonMarkerOptions.fillColor = "blue";
-            } else {
-                geojsonMarkerOptions.fillColor = "red";
-            };
-
-            geojsonMarkerOptions.radius = calcPropRadius(attValue);
-
-            var teamMarker = L.circleMarker(latlng, geojsonMarkerOptions);
-            return teamMarker;
-        }
+        pointToLayer: pointToLayer
     }).addTo(map);
 };
 
