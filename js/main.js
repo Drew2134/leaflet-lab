@@ -2,7 +2,7 @@
 function createPropSymbols(data, map) {
     var markerColor;
 
-    if (data.properties.conference == "National League") {
+    if (data.feature.properties.conference == "National League") {
         markerColor = "blue";
     } else {
         markerColor = "red";
