@@ -32,7 +32,7 @@ function pointToLayer(feature, latlng) {
 
     for(let i=0; i < fieldName.length; i++) {
         if(fieldName.toString().startsWith("yr")) {
-            fieldName.slice(2);
+            fieldName.toStringslice(2);
             fieldValue = fieldValue.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2');
         }
         
