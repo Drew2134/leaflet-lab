@@ -27,7 +27,8 @@ function pointToLayer(feature, latlng) {
 
     //build html content for info panel
     var panelTable;
-    var panelContent = "<img src='" + teamLogo + "' alt='" + team + " logo' style='width:75px; height:75px;'>";
+    console.log(feature.properties);
+    var panelContent = "<img src='" + teamLogo + "' alt='" + team + " logo' style='width:75px; height:75px;'>" + panelTable;
 
     //bind popup event to marker
     teamMarker.bindPopup(popupContent, {
