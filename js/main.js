@@ -29,12 +29,21 @@ function pointToLayer(feature, latlng) {
     var fieldName = Object.keys(feature.properties);
     var fieldValue = Object.values(feature.properties);
     var panelTable = "<table>"
-    for(let i=0; i <= fieldName.length; i++) {
+
+    for(let i=0; i < fieldName.length; i++) {
+        if(fieldName.startsWith("yr")) {
+            fieldName.slice(2);
+            fieldValue = fieldValue.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2');
+        }
+        
+        
         panelTable += "<tr><th>" + fieldName[i] + "</th><td>" + fieldValue[i] + "</td></tr>";
-    }
+    };
+
     panelTable += "</table>";
     
-    var panelContent = "<figure><img src='" + teamLogo + "' alt='" + team + " logo' style='width:75px; height:75px;'><figcaption>Credit: SportsLogos.net</figcaption></figure>" + panelTable;
+    var panelNotes = "<p>*franchise values are estimates in millions";
+    var panelContent = "<figure><img src='" + teamLogo + "' alt='" + team + " logo' style='width:75px; height:75px;'><figcaption style='color:gray; font-style:italic; font-size:12;'>Credit: SportsLogos.net</figcaption></figure>" + panelTable + panelNotes;
 
     //bind popup event to marker
     teamMarker.bindPopup(popupContent, {
