@@ -44,14 +44,17 @@ html, body {
 
 #viewDiv {
     width: 80%;
-    height: 100%;
+    height: inherit;
+    box-sizing: border-box;
     float: left;
-    margin: 0 15px 15px 15px;
+    margin: 0 15px 0 15px;
     border: 5px;
     border-style: groove;
 }
 
 #panel {
+    height: inherit;
+    box-sizing: border-box;
     float: left;
     vertical-align: top;
 }
