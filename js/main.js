@@ -31,7 +31,7 @@ function pointToLayer(feature, latlng) {
     var panelTable = "<table>"
 
     for(let i=0; i < fieldName.length; i++) {
-        if(fieldName.startsWith("yr")) {
+        if(fieldName.toString().startsWith("yr")) {
             fieldName.slice(2);
             fieldValue = fieldValue.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2');
         }
