@@ -29,7 +29,7 @@ function pointToLayer(feature, latlng) {
     var panelTable;
     console.log(Object.keys(feature.properties));
     
-    var panelContent = "<img src='" + teamLogo + "' alt='" + team + " logo' style='width:75px; height:75px;'>" + panelTable;
+    var panelContent = "<figure><img src='" + teamLogo + "' alt='" + team + " logo' style='width:75px; height:75px;'><figcaption>Credit: SportsLogos.net</figcaption></figure>" + panelTable;
 
     //bind popup event to marker
     teamMarker.bindPopup(popupContent, {
