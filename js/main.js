@@ -27,8 +27,8 @@ function pointToLayer(feature, latlng) {
 
     //build html content for info panel
     var panelTable;
-    var panelContent = "<p>Hello</p><img src='" + teamLogo + "' atl=" + team + " logo style='width:75px; height:75px;>" + panelTable;
-    
+    var panelContent = "<p>Hello</p><img src='" + teamLogo + "' alt=" + team + " logo style='width:75px; height:75px;>";
+
     //bind popup event to marker
     teamMarker.bindPopup(popupContent, {
         offset: new L.Point(0, -geojsonMarkerOptions.radius),
