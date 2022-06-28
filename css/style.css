@@ -53,8 +53,10 @@ html, body {
 }
 
 #panel {
+    width: inherit;
     height: inherit;
     box-sizing: border-box;
     float: left;
     vertical-align: top;
+    align-content: center;
 }
