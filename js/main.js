@@ -27,7 +27,7 @@ function pointToLayer(feature, latlng) {
 
     //build html content for info panel
     var panelTable;
-    console.log(Object.keys(feature));
+    console.log(Object.keys(feature.properties));
     
     var panelContent = "<img src='" + teamLogo + "' alt='" + team + " logo' style='width:75px; height:75px;'>" + panelTable;
 
