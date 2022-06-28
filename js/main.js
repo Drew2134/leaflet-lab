@@ -26,8 +26,13 @@ function pointToLayer(feature, latlng) {
     var popupContent = "<p>" + team + "</p>";
 
     //build html content for info panel
-    var panelTable;
-    console.log(Object.keys(feature.properties));
+    var fieldName = console.log(Object.keys(feature.properties));
+    var fieldValue = console.log(Object.values(feature.properties));
+    var panelTable = "<table>"
+    for(let i=0; i <= fieldName.length; i++) {
+        panelTable += "<tr><th>" + fieldName[i] + "</th><td>" + fieldValue[i] + "</td></tr>";
+    }
+    panelTable += "</table>";
     
     var panelContent = "<figure><img src='" + teamLogo + "' alt='" + team + " logo' style='width:75px; height:75px;'><figcaption>Credit: SportsLogos.net</figcaption></figure>" + panelTable;
 
