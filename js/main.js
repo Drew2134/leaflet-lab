@@ -31,10 +31,19 @@ function pointToLayer(feature, latlng) {
     var panelTable = "<table>"
 
     for(let i=0; i < fieldName.length; i++) {
-        fieldName[i] = fieldName[i].replace("_", " ");
+        //formatting field names and values for table
         if(fieldName[i].toString().startsWith("yr")) {
             fieldName[i] = fieldName[i].toString().slice(2);
             fieldValue[i] = fieldValue[i].toString().replace(/(\d+)(\d{3})/, '$$1' + ',' + '$2');
+        } else if (fieldName[11]) {
+            fieldName[i] = "Stadium Name";
+        } else if (fieldName[12]) {
+            fieldName[i] = "Capacity";
+            fieldValue[i] = fieldValue[i].toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2');
+        } else if (fieldName[13]) {
+            fieldName[i] = "Conference";
+        } else {
+            fieldName[i] = "Division";
         }
         
         
