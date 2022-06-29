@@ -56,12 +56,13 @@ html, body {
     width: inherit;
     height: inherit;
     box-sizing: border-box;
+    margin-right: 15px;
     float: left;
     vertical-align: top;
     align-content: center;
 }
 
-#infoTable {
+#infoTable, th, tr {
     width: 100%;
     border: 2px solid;
     border-collapse: collapse;
