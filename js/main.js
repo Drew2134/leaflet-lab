@@ -99,6 +99,7 @@ function addWidgets(map, layer) {
     var controlSearch = new L.Control.Search({
 		position:'topright',		
 		layer: layer,
+        propertyName: "Team",
 		initial: false,
 		zoom: 12,
 		marker: false
