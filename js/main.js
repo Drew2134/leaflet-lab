@@ -95,6 +95,17 @@ function calcPropRadius(attValue) {
     return radius;
 };
 
+function addWidgets(map, layer) {
+    var controlSearch = new L.Control.Search({
+		position:'topright',		
+		layer: layer,
+		initial: false,
+		zoom: 12,
+		marker: false
+	});
+
+	map.addControl( controlSearch );
+}
 //function to add circle markers to map
 function createPropSymbols(data, map) {
     const LAYER = L.geoJson(data, {
@@ -102,6 +113,8 @@ function createPropSymbols(data, map) {
     }).addTo(map);
 
     map.fitBounds(LAYER.getBounds());
+
+    addWidgets(map, LAYER);
 };
 
 //function to import MLB geoJSON data
