@@ -62,7 +62,7 @@ html, body {
     align-content: center;
 }
 
-#infoTable, th, tr {
+#infoTable, th, td {
     width: 100%;
     border: 2px solid;
     border-collapse: collapse;
