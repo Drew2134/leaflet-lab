@@ -97,9 +97,11 @@ function calcPropRadius(attValue) {
 
 //function to add circle markers to map
 function createPropSymbols(data, map) {
-    L.geoJson(data, {
+    const LAYER = L.geoJson(data, {
         pointToLayer: pointToLayer
     }).addTo(map);
+
+    map.fitBounds(getBounds(LAYER));
 };
 
 //function to import MLB geoJSON data
