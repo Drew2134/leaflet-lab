@@ -64,4 +64,5 @@ html, body {
 #infoTable {
     width: 100%;
     border: 2px solid;
+    border-collapse: collapse;
 }
