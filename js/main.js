@@ -97,7 +97,7 @@ function calcPropRadius(attValue) {
 
 function addWidgets(map, layer) {
     var controlSearch = new L.Control.Search({
-		position:'topright',		
+		position:'topleft',		
 		layer: layer,
         propertyName: "Team",
 		initial: false,
