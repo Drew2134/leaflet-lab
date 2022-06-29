@@ -105,7 +105,7 @@ function addWidgets(map, layer) {
 		marker: false
 	});
 
-	map.addControl( controlSearch );
+	map.addControl(controlSearch);
 }
 //function to add circle markers to map
 function createPropSymbols(data, map) {
