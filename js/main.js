@@ -101,7 +101,7 @@ function createPropSymbols(data, map) {
         pointToLayer: pointToLayer
     }).addTo(map);
 
-    map.fitBounds(getBounds(LAYER));
+    map.fitBounds(LAYER.getBounds());
 };
 
 //function to import MLB geoJSON data
