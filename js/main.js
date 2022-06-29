@@ -53,7 +53,7 @@ function pointToLayer(feature, latlng) {
     panelTable += "</table>";
     
     var panelNotes = "<p>*franchise values are estimates in millions";
-    var panelContent = "<figure><img src='" + teamLogo + "' alt='" + team + " logo' style='width:75px; height:75px;'><figcaption style='color:gray; font-style:italic; font-size:12;'>Credit: SportsLogos.net</figcaption></figure>" + panelTable + panelNotes;
+    var panelContent = "<img src='" + teamLogo + "' alt='" + team + " logo' style='width:75px; height:75px;'><p style='color:gray; font-style:italic; font-size:12;'>Credit: SportsLogos.net</p>" + panelTable + panelNotes;
 
     //bind popup event to marker
     teamMarker.bindPopup(popupContent, {
