@@ -119,11 +119,12 @@ function createMap() {
     //tie map to viewDiv in HTML. Set center to center of U.S. and zoom of 4
     const MAP = L.map('viewDiv', {
         center: [39.8283, -98.5795],
-        zoom: 4
+        zoom: 5
     });
 
     //link to humanitarian style OSM tiles
     L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
+        minZoom: 4,
         maxZoom: 19,
         attribution: "&copy OpenStreetMap"
     }).addTo(MAP);
