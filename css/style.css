@@ -55,8 +55,14 @@ html, body {
 #panel {
     width: inherit;
     height: inherit;
+    resize: horizontal;
     box-sizing: border-box;
     float: left;
     vertical-align: top;
     align-content: center;
+}
+
+#infoTable .tr {
+    width: 100%;
+    border: 2px solid;
 }

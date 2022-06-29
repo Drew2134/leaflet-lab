@@ -28,7 +28,7 @@ function pointToLayer(feature, latlng) {
     //build html content for info panel
     var fieldName = Object.keys(feature.properties);
     var fieldValue = Object.values(feature.properties);
-    var panelTable = "<table>"
+    var panelTable = "<table id='infoTable'>"
 
     for(let i=0; i < fieldName.length; i++) {
         //formatting field names and values for table
