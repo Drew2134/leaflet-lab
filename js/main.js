@@ -34,12 +34,12 @@ function pointToLayer(feature, latlng) {
         //formatting field names and values for table
         if(fieldName[i].toString().startsWith("yr")) {
             fieldName[i] = fieldName[i].toString().slice(2);
-            fieldValue[i] = fieldValue[i].toString().replace(/(\d+)(\d{3})/, '$$1' + ',' + '$2');
+            fieldValue[i] = "$" + fieldValue[i].toLocaleString();
         } else if (i == 11) {
             fieldName[i] = "Stadium Name";
         } else if (i == 12) {
             fieldName[i] = "Capacity";
-            fieldValue[i] = fieldValue[i].toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2');
+            fieldValue[i] = fieldValue[i].toLocaleString();
         } else if (i == 13) {
             fieldName[i] = "Conference";
         } else {
