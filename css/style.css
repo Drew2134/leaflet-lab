@@ -62,7 +62,7 @@ html, body {
     align-content: center;
 }
 
-#infoTable .tr {
+#infoTable {
     width: 100%;
     border: 2px solid;
 }
