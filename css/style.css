@@ -72,7 +72,8 @@ table, th, td {
     white-space: nowrap;
 }
 
-th, td {
+td {
+    text-align: center;
     padding: 5px;
 }
 
