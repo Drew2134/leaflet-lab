@@ -30,10 +30,13 @@ html, body {
 }
 
 #filtersDiv {
-    float: left;
+    position: relative;
+    float: right;
+    margin: 10px;
     padding: 5px;
     border: 3px;
     border-style: solid;
+    z-index: 500;
 }
 
 #bodyDiv {
