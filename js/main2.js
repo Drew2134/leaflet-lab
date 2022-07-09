@@ -15,42 +15,43 @@ function createMap() {
         attribution: "&copy OpenStreetMap"
     }).addTo(MAP);
 
+    var layerControl = L.control.layers().addTo(MAP);
+    layerControl.addBaseLayer(humanBasemap, "Humanitarian");
+
     //call function to get MLB data
-    getData(MAP);
-
-    var baseMaps = {
-        "Humanitarian": humanBasemap
-    }
-
-    var layerControl = L.control.layers(baseMaps).addTo(MAP);
+    getData(MAP, layerControl);
 };
 
 //function to import MLB geoJSON datas
-function getData(map) {
+function getData(map, layerControl) {
     $.ajax("data/MLBStadiumsData.geojson", {
         dataType: "json",
         success: function(response) {
             //call functions to create proportional symbol layers
-            createNLSymbols(response, map);
-            createALSymbols(response, map);
+            createNLSymbols(response, map, layerControl);
+            createALSymbols(response, map, layerControl);
         }
     });
 };
 
 //function to add circle markers for NL teams
-function createNLSymbols(data, map) {
+function createNLSymbols(data, map, layerControl) {
     const NL_LAYER = L.geoJson(data, {
         pointToLayer: pointToLayer,
         filter: pullNLTeams
     }).addTo(map);
+
+    layerControl.addOverlay(NL_LAYER, "National League");
 };
 
 //function to add circle markers for AL teams
-function createALSymbols(data, map) {
+function createALSymbols(data, map, layerControl) {
     const AL_LAYER = L.geoJson(data, {
         pointToLayer: pointToLayer,
         filter: pullALTeams
     }).addTo(map);
+
+    layerControl.addOverlay(AL_LAYER, "American League");
 };
 
 //filter function for getting NL teams
