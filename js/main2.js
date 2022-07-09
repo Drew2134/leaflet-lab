@@ -15,11 +15,15 @@ function createMap() {
         attribution: "&copy OpenStreetMap"
     }).addTo(MAP);
 
-    const DARK_GRAY = L.esri.Vector.vectorBasemapLayer("ArcGIS:DarkGray");
-
+    const DARK = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png", {
+        minZoom: 4,
+        maxZoom: 19,
+        attribution: "&copy OpenStreetMap"
+    });
+    
     var layerControl = L.control.layers().addTo(MAP);
     layerControl.addBaseLayer(HUMAN_BASE, "Humanitarian");
-    layerControl.addBaseLayer(DARK_GRAY, "Dark Gray");
+    layerControl.addBaseLayer(DARK, "Dark");
 
     //call function to get MLB data
     getData(MAP, layerControl);
