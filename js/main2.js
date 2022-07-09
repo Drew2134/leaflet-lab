@@ -93,7 +93,12 @@ function pointToLayer(feature, latlng) {
     var fieldValue = Object.values(feature.properties);
     var panelTable = "<table id='infoTable'>"
 
-    for(let i=0; i < fieldName.length; i++) {     
+    for(let i=0; i < fieldName.length; i++) {
+        //find value fields and format numbers
+        if(fieldName[i].toString().startsWith("20")) {
+            fieldValue[i] = "$" + fieldValue[i].toLocaleString();
+        }
+        //add data to row and add row to table
         panelTable += "<tr><th>" + fieldName[i] + "</th><td>" + fieldValue[i] + "</td></tr>";
     };
 
@@ -141,3 +146,10 @@ function calcPropRadius(attValue) {
 
     return radius;
 };
+
+var overlayMaps = {
+    "American League": AL_LAYER,
+    "National League": NL_LAYER
+};
+
+var layerControl = L.control.layers(overlayMaps).addTo(map);

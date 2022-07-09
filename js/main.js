@@ -30,7 +30,23 @@ function pointToLayer(feature, latlng) {
     var fieldValue = Object.values(feature.properties);
     var panelTable = "<table id='infoTable'>"
 
-    for(let i=0; i < fieldName.length; i++) {     
+    for(let i=0; i < fieldName.length; i++) {
+        //formatting field names and values for table
+        if(fieldName[i].toString().startsWith("20")) {
+            fieldName[i] = fieldName[i].toString().slice(2);
+            fieldValue[i] = "$" + fieldValue[i].toLocaleString();
+        } else if (i == 11) {
+            fieldName[i] = "Stadium Name";
+        } else if (i == 12) {
+            fieldName[i] = "Capacity";
+            fieldValue[i] = fieldValue[i].toLocaleString();
+        } else if (i == 13) {
+            fieldName[i] = "Conference";
+        } else {
+            fieldName[i] = "Division";
+        }
+        
+        
         panelTable += "<tr><th>" + fieldName[i] + "</th><td>" + fieldValue[i] + "</td></tr>";
     };
 
@@ -79,6 +95,18 @@ function calcPropRadius(attValue) {
     return radius;
 };
 
+function addWidgets(map, layer) {
+    var controlSearch = new L.Control.Search({
+		position:'topleft',		
+		layer: layer,
+        propertyName: "Team",
+		initial: false,
+		zoom: 12,
+		marker: false
+	});
+
+	map.addControl(controlSearch);
+}
 //function to add circle markers to map
 function createPropSymbols(data, map) {
     const LAYER = L.geoJson(data, {
@@ -86,6 +114,8 @@ function createPropSymbols(data, map) {
     }).addTo(map);
 
     map.fitBounds(LAYER.getBounds());
+
+    addWidgets(map, LAYER);
 };
 
 //function to import MLB geoJSON data

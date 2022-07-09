@@ -16,7 +16,7 @@
           "2020": 5300,
           "2021": 6000,
           "Stadium": "Yankee Stadium",
-          "Capacity": 46537,
+          "Capacity": "46,537",
           "Conference": "American League",
           "Division": "East"
         },
@@ -43,7 +43,7 @@
           "2020": 3600,
           "2021": 4075,
           "Stadium": "Dodger Stadium",
-          "Capacity": 56000,
+          "Capacity": "56,000",
           "Conference": "National League",
           "Division": "West"
         },
@@ -70,7 +70,7 @@
           "2020": 3500,
           "2021": 3900,
           "Stadium": "Fenway Park",
-          "Capacity": 37755,
+          "Capacity": "37,755",
           "Conference": "American League",
           "Division": "East"
         },
@@ -97,7 +97,7 @@
           "2020": 3400,
           "2021": 3800,
           "Stadium": "Wrigley Field",
-          "Capacity": 41649,
+          "Capacity": "41,649",
           "Conference": "National League",
           "Division": "Central"
         },
@@ -124,7 +124,7 @@
           "2020": 3200,
           "2021": 3500,
           "Stadium": "Oracle Park",
-          "Capacity": 41265,
+          "Capacity": "41,265",
           "Conference": "National League",
           "Division": "West"
         },
@@ -151,7 +151,7 @@
           "2020": 2500,
           "2021": 2650,
           "Stadium": "Citi Field",
-          "Capacity": 41922,
+          "Capacity": "41,922",
           "Conference": "National League",
           "Division": "East"
         },
@@ -178,7 +178,7 @@
           "2020": 2200,
           "2021": 2450,
           "Stadium": "Busch Stadium",
-          "Capacity": 45494,
+          "Capacity": "45,494",
           "Conference": "National League",
           "Division": "Central"
         },
@@ -205,7 +205,7 @@
           "2020": 2100,
           "2021": 2300,
           "Stadium": "Citizens Bank Park",
-          "Capacity": 42792,
+          "Capacity": "42,792",
           "Conference": "National League",
           "Division": "East"
         },
@@ -232,7 +232,7 @@
           "2020": 2000,
           "2021": 2200,
           "Stadium": "Angel Stadium",
-          "Capacity": 45517,
+          "Capacity": "45,517",
           "Conference": "American League",
           "Division": "West"
         },
@@ -259,7 +259,7 @@
           "2020": 1900,
           "2021": 2100,
           "Stadium": "Truist Park",
-          "Capacity": 41084,
+          "Capacity": "41,084",
           "Conference": "National League",
           "Division": "East"
         },
@@ -286,7 +286,7 @@
           "2020": 1800,
           "2021": 2050,
           "Stadium": "Globe Life Field",
-          "Capacity": 40300,
+          "Capacity": "40,300",
           "Conference": "American League",
           "Division": "West"
         },
@@ -313,7 +313,7 @@
           "2020": 1900,
           "2021": 2000,
           "Stadium": "Nationals Park",
-          "Capacity": 41339,
+          "Capacity": "41,339",
           "Conference": "National League",
           "Division": "East"
         },
@@ -340,7 +340,7 @@
           "2020": 1900,
           "2021": 1980,
           "Stadium": "Minute Maid Park",
-          "Capacity": 41168,
+          "Capacity": "41,168",
           "Conference": "American League",
           "Division": "West"
         },
@@ -367,7 +367,7 @@
           "2020": 1700,
           "2021": 1780,
           "Stadium": "Rogers Centre",
-          "Capacity": 49286,
+          "Capacity": "49,286",
           "Conference": "American League",
           "Division": "East"
         },
@@ -394,7 +394,7 @@
           "2020": 1700,
           "2021": 1760,
           "Stadium": "Guaranteed Rate Field",
-          "Capacity": 40615,
+          "Capacity": "40,615",
           "Conference": "American League",
           "Division": "Central"
         },
@@ -421,7 +421,7 @@
           "2020": 1600,
           "2021": 1700,
           "Stadium": "T-Mobile Park",
-          "Capacity": 47929,
+          "Capacity": "47,929",
           "Conference": "American League",
           "Division": "West"
         },
@@ -448,7 +448,7 @@
           "2020": 1500,
           "2021": 1575,
           "Stadium": "Petco Park",
-          "Capacity": 40209,
+          "Capacity": "40,209",
           "Conference": "National League",
           "Division": "West"
         },
@@ -475,7 +475,7 @@
           "2020": 1300,
           "2021": 1400,
           "Stadium": "Comerica Park",
-          "Capacity": 41083,
+          "Capacity": "41,083",
           "Conference": "American League",
           "Division": "Central"
         },
@@ -502,7 +502,7 @@
           "2020": 1300,
           "2021": 1390,
           "Stadium": "Target Field",
-          "Capacity": 38544,
+          "Capacity": "38,544",
           "Conference": "American League",
           "Division": "Central"
         },
@@ -529,7 +529,7 @@
           "2020": 1300,
           "2021": 1385,
           "Stadium": "Coors Field",
-          "Capacity": 50144,
+          "Capacity": "50,144",
           "Conference": "National League",
           "Division": "West"
         },
@@ -556,7 +556,7 @@
           "2020": 1300,
           "2021": 1380,
           "Stadium": "Chase Field",
-          "Capacity": 48405,
+          "Capacity": "48,405",
           "Conference": "National League",
           "Division": "West"
         },
@@ -583,7 +583,7 @@
           "2020": 1400,
           "2021": 1375,
           "Stadium": "Camden Yards",
-          "Capacity": 45971,
+          "Capacity": "45,971",
           "Conference": "American League",
           "Division": "East"
         },
@@ -610,7 +610,7 @@
           "2020": 1300,
           "2021": 1320,
           "Stadium": "PNC Park",
-          "Capacity": 38747,
+          "Capacity": "38,747",
           "Conference": "National League",
           "Division": "Central"
         },
@@ -637,7 +637,7 @@
           "2020": 1200,
           "2021": 1300,
           "Stadium": "Progressive Field",
-          "Capacity": 34830,
+          "Capacity": "34,830",
           "Conference": "American League",
           "Division": "Central"
         },
@@ -664,7 +664,7 @@
           "2020": 1200,
           "2021": 1280,
           "Stadium": "American Family Field",
-          "Capacity": 41900,
+          "Capacity": "41,900",
           "Conference": "National League",
           "Division": "Central"
         },
@@ -691,7 +691,7 @@
           "2020": 1100,
           "2021": 1190,
           "Stadium": "Great American Ball Park",
-          "Capacity": 42319,
+          "Capacity": "42,319",
           "Conference": "National League",
           "Division": "Central"
         },
@@ -718,7 +718,7 @@
           "2020": 1100,
           "2021": 1180,
           "Stadium": "RingCentral Coliseum",
-          "Capacity": 46847,
+          "Capacity": "46,847",
           "Conference": "American League",
           "Division": "West"
         },
@@ -745,7 +745,7 @@
           "2020": 1100,
           "2021": 1110,
           "Stadium": "Kauffman Stadium",
-          "Capacity": 37903,
+          "Capacity": "37,903",
           "Conference": "American League",
           "Division": "Central"
         },
@@ -772,7 +772,7 @@
           "2020": 1100,
           "2021": 1100,
           "Stadium": "Tropicana Field",
-          "Capacity": 25000,
+          "Capacity": "25,000",
           "Conference": "American League",
           "Division": "East"
         },
@@ -799,7 +799,7 @@
           "2020": 990,
           "2021": 990,
           "Stadium": "LoanDepot Park",
-          "Capacity": 36742,
+          "Capacity": "36,742",
           "Conference": "National League",
           "Division": "East"
         },
