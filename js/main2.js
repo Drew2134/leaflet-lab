@@ -18,7 +18,7 @@ function createMap() {
     const DARK = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png", {
         minZoom: 4,
         maxZoom: 19,
-        attribution: "&copy OpenStreetMap"
+        attribution: "&copy OpenStreetMap &copy CARTO"
     });
     
     var layerControl = L.control.layers().addTo(MAP);
