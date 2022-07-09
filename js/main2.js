@@ -17,6 +17,8 @@ function createMap() {
 
     //call function to get MLB data
     getData(MAP);
+
+    var layerControl = L.control.layers().addTo(MAP);
 };
 
 //function to import MLB geoJSON datas
@@ -146,10 +148,3 @@ function calcPropRadius(attValue) {
 
     return radius;
 };
-
-/*var overlayMaps = {
-    "American League": AL_LAYER,
-    "National League": NL_LAYER
-};*/
-
-var layerControl = L.control.layers().addTo(map);
