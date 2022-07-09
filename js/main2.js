@@ -147,9 +147,9 @@ function calcPropRadius(attValue) {
     return radius;
 };
 
-var overlayMaps = {
+/*var overlayMaps = {
     "American League": AL_LAYER,
     "National League": NL_LAYER
-};
+};*/
 
-var layerControl = L.control.layers(overlayMaps).addTo(map);
+var layerControl = L.control.layers().addTo(map);
