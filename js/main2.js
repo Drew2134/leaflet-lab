@@ -9,14 +9,17 @@ function createMap() {
     });
 
     //grab humanitarian style OSM tiles
-    const humanBasemap = L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
+    const HUMAN_BASE = L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
         minZoom: 4,
         maxZoom: 19,
         attribution: "&copy OpenStreetMap"
     }).addTo(MAP);
 
+    const DARK_GRAY = L.esri.Vector.vectorBasemapLayer("ArcGIS:DarkGray");
+
     var layerControl = L.control.layers().addTo(MAP);
-    layerControl.addBaseLayer(humanBasemap, "Humanitarian");
+    layerControl.addBaseLayer(HUMAN_BASE, "Humanitarian");
+    layerControl.addBaseLayer(DARK_GRAY, "Dark Gray");
 
     //call function to get MLB data
     getData(MAP, layerControl);
