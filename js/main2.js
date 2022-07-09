@@ -1,6 +1,69 @@
+$(document).ready(createMap);
+
+//function to generate map and view with OSM tiles
+function createMap() {
+    //tie map to viewDiv in HTML. Set center to center of U.S. and zoom of 5
+    const MAP = L.map("viewDiv", {
+        center: [39.8283, -98.5795],
+        zoom: 5
+    });
+
+    //grab humanitarian style OSM tiles
+    L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
+        minZoom: 4,
+        maxZoom: 19,
+        attribution: "&copy OpenStreetMap"
+    }).addTo(MAP);
+
+    //call function to get MLB data
+    getData(MAP);
+};
+
+//function to import MLB geoJSON datas
+function getData(map) {
+    $.ajax("data/MLBStadiumsData.geojson", {
+        dataType: "json",
+        success: function(response) {
+            //call functions to create proportional symbol layers
+            createNLSymbols(response, map);
+            createALSymbols(response, map);
+        }
+    });
+};
+
+//function to add circle markers for NL teams
+function createNLSymbols(data, map) {
+    const NL_LAYER = L.geoJson(data, {
+        pointToLayer: pointToLayer,
+        filter: pullNLTeams
+    }).addTo(map);
+};
+
+//function to add circle markers for AL teams
+function createALSymbols(data, map) {
+    const AL_LAYER = L.geoJson(data, {
+        pointToLayer: pointToLayer,
+        filter: pullALTeams
+    }).addTo(map);
+};
+
+//filter function for getting NL teams
+function pullNLTeams(feature) {
+    if (feature.properties.Conference == "National League") {
+        return true;
+    }
+};
+
+//filter function for getting AL Teams
+function pullALTeams(feature) {
+    if (feature.properties.Conference == "American League") {
+        return true;
+    }
+};
+
 //function to convert default point markers to circle markers
 function pointToLayer(feature, latlng) {
-    var attribute = "yr2021";
+    var attribute = "2021";
 
     //generic marker options consistent to every feature
     var geojsonMarkerOptions = {
@@ -14,7 +77,7 @@ function pointToLayer(feature, latlng) {
 
     //call radius and color functions to populate marker options
     geojsonMarkerOptions.radius = calcPropRadius(attValue);
-    geojsonMarkerOptions.fillColor = calcSymbolColor(feature.properties.conference)
+    geojsonMarkerOptions.fillColor = calcSymbolColor(feature.properties.Conference)
 
     //create marker with calculated options
     var teamMarker = L.circleMarker(latlng, geojsonMarkerOptions);
@@ -78,47 +141,3 @@ function calcPropRadius(attValue) {
 
     return radius;
 };
-
-//function to add circle markers to map
-function createPropSymbols(data, map) {
-    const LAYER = L.geoJson(data, {
-        pointToLayer: pointToLayer
-    }).addTo(map);
-
-    map.fitBounds(LAYER.getBounds());
-};
-
-//function to import MLB geoJSON data
-function getData(map){
-    $.ajax("data/MLBStadiumsData.geojson", {
-        dataType: "json",
-        success: function(response){
-
-            //call function to create proportional symbols
-            createPropSymbols(response, map);
-        }
-    });
-};
-
-//function to generate map and view with openstreetmap tile
-function createMap() {
-    //tie map to viewDiv in HTML. Set center to center of U.S. and zoom of 4
-    const MAP = L.map('viewDiv', {
-        center: [39.8283, -98.5795],
-        zoom: 5
-    });
-
-    //link to humanitarian style OSM tiles
-    L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
-        minZoom: 4,
-        maxZoom: 19,
-        attribution: "&copy OpenStreetMap"
-    }).addTo(MAP);
-
-    //call function to get MLB data
-    getData(MAP)
-};
-
-$(document).ready(createMap);
-
-//CREDIT FOR TEAM LOGOS: SportsLogos.net
