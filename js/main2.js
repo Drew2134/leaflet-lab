@@ -9,7 +9,7 @@ function createMap() {
     });
 
     //grab humanitarian style OSM tiles
-    L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
+    const humanBasemap = L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
         minZoom: 4,
         maxZoom: 19,
         attribution: "&copy OpenStreetMap"
@@ -18,7 +18,11 @@ function createMap() {
     //call function to get MLB data
     getData(MAP);
 
-    addLayerControls(MAP);
+    var baseMaps = {
+        "Humanitarian": humanBasemap
+    }
+
+    var layerControl = L.control.layers(baseMaps).addTo(MAP);
 };
 
 //function to import MLB geoJSON datas
@@ -148,12 +152,3 @@ function calcPropRadius(attValue) {
 
     return radius;
 };
-
-function addLayerControls(map) {
-
-    var baseMaps = {};
-    var overlayMaps = {};
-    
-    var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
-
-}
