@@ -27,19 +27,19 @@ function createMap() {
 
     L.control.timelineSlider({
         timelineItems: ["2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"],
-        changeMap: getData(MAP, layerControl, {label})
+        changeMap: getData(MAP, layerControl)
     })
     .addTo(MAP);
 };
 
 //function to import MLB geoJSON datas
-function getData(map, layerControl, year) {
+function getData(map, layerControl, {label, value, map}) {
     $.ajax("data/MLBStadiumsData.geojson", {
         dataType: "json",
         success: function(response) {
             //call functions to create proportional symbol layers
-            createNLSymbols(response, map, layerControl, year);
-            createALSymbols(response, map, layerControl, year);
+            createNLSymbols(response, map, layerControl, value);
+            createALSymbols(response, map, layerControl, value);
         }
     });
 };
