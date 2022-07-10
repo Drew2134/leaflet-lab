@@ -28,14 +28,15 @@ function createMap() {
     //add time slider widget
     L.control.timelineSlider({
         timelineItems: ["2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"],
-        changeMap: getData(MAP, layerControl, "2012")
+        changeMap: getData(MAP, layerControl)
     })
     .addTo(MAP);
 };
 
 //function to import MLB geoJSON datas
-function getData(map, layerControl, value) {
-    console.log(map.properties);
+function getData(map, layerControl) {
+    let value = map.value
+    console.log(value)
     $.ajax("data/MLBStadiumsData.geojson", {
         dataType: "json",
         success: function(response) {
