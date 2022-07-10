@@ -35,6 +35,7 @@ function createMap() {
 
 function changeMap ({value, label, map}) {
     console.log(value, label, map);
+    getData(map, layerControl, label)
 }
  
 //function to import MLB geoJSON datas
