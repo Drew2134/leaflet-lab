@@ -164,8 +164,3 @@ function calcPropRadius(attValue) {
 
     return radius;
 };
-
-function changeMap( {label, value, map, exclamation}) {
-    console.log(label, map);
-    console.log(map.layerControl)
-};
