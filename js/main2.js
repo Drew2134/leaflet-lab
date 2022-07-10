@@ -44,8 +44,8 @@ function getData({value, label, map, layerControl}) {
         dataType: "json",
         success: function(response) {
             //call functions to create proportional symbol layers
-            createNLSymbols(response, map, layerControl, 2012);
-            createALSymbols(response, map, layerControl, 2012);
+            createNLSymbols(response, map, 2012, layerControl);
+            createALSymbols(response, map, 2012, layerControl);
         }
     });
 };
