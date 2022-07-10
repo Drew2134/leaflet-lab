@@ -27,7 +27,8 @@ function createMap() {
 
     L.control.timelineSlider({
         timelineItems: ["Day 1", "The Next Day", "Amazing Event", "1776", "12/22/63", "1984"],
-        extraChangeMapParams: {greeting: "Hello World!"}
+        extraChangeMapParams: {greeting: "Hello World!"},
+        changeMap: function({label, value, map}) { console.log("You are not using the value or label from the timeline to change the map."); }
     })
     .addTo(MAP);
 
