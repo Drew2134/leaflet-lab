@@ -28,25 +28,25 @@ function createMap() {
     L.control.timelineSlider({
         timelineItems: ["2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"],
         extraChangeMapParams: {greeting: "Hello World!"},
-        changeMap: getData(MAP, layerControl)
+        changeMap: getData(MAP, layerControl, value)
     })
     .addTo(MAP);
 };
 
 //function to import MLB geoJSON datas
-function getData(map, layerControl) {
+function getData(map, layerControl, year) {
     $.ajax("data/MLBStadiumsData.geojson", {
         dataType: "json",
         success: function(response) {
             //call functions to create proportional symbol layers
-            createNLSymbols(response, map, layerControl);
-            createALSymbols(response, map, layerControl);
+            createNLSymbols(response, map, layerControl, year);
+            createALSymbols(response, map, layerControl, year);
         }
     });
 };
 
 //function to add circle markers for NL teams
-function createNLSymbols(data, map, layerControl) {
+function createNLSymbols(data, map, layerControl, year) {
     const NL_LAYER = L.geoJson(data, {
         pointToLayer: pointToLayer,
         filter: pullNLTeams
@@ -56,7 +56,7 @@ function createNLSymbols(data, map, layerControl) {
 };
 
 //function to add circle markers for AL teams
-function createALSymbols(data, map, layerControl) {
+function createALSymbols(data, map, layerControl, year) {
     const AL_LAYER = L.geoJson(data, {
         pointToLayer: pointToLayer,
         filter: pullALTeams
@@ -164,7 +164,3 @@ function calcPropRadius(attValue) {
 
     return radius;
 };
-
-function resizeMarkers() {
-    console.log("Change Size Attribute")
-}
