@@ -61,7 +61,7 @@ function createNLSymbols(data, map, year, layerControl) {
 };
 
 //function to add circle markers for AL teams
-function createALSymbols(data, map, layerControl, year) {
+function createALSymbols(data, map, year, layerControl) {
     const AL_LAYER = L.geoJson(data, {
         pointToLayer: pointToLayer,
         filter: pullALTeams
