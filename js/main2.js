@@ -5,7 +5,7 @@ function createMap() {
     //tie map to viewDiv in HTML. Set center to center of U.S. and zoom of 5
     const MAP = L.map("viewDiv", {
         center: [39.8283, -98.5795],
-        zoom: 5
+        zoom: 4
     });
 
     //grab humanitarian style OSM tiles
@@ -86,7 +86,6 @@ function pullALTeams(feature) {
 
 //function to convert default point markers to circle markers
 function pointToLayer(feature, latlng) {
-    console.log(feature, latlng, mapParams)
     var attribute = "2012"
 
     //generic marker options consistent to every feature
