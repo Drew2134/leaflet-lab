@@ -28,16 +28,11 @@ function createMap() {
     //add time slider widget
     L.control.timelineSlider({
         timelineItems: ["2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"],
-        changeMap: changeMap
+        changeMap: getData
     })
     .addTo(MAP);
 };
 
-function changeMap ({value, label, map}) {
-    console.log(value, label, map);
-    getData(map, layerControl, label)
-}
- 
 //function to import MLB geoJSON datas
 function getData(map, layerControl) {
     let value = map.value
@@ -46,14 +41,14 @@ function getData(map, layerControl) {
         dataType: "json",
         success: function(response) {
             //call functions to create proportional symbol layers
-            createNLSymbols(response, map, layerControl, value);
-            createALSymbols(response, map, layerControl, value);
+            createNLSymbols(response, map, layerControl);
+            createALSymbols(response, map, layerControl);
         }
     });
 };
 
 //function to add circle markers for NL teams
-function createNLSymbols(data, map, layerControl, year) {
+function createNLSymbols(data, map, layerControl) {
     const NL_LAYER = L.geoJson(data, {
         pointToLayer: pointToLayer,
         filter: pullNLTeams
@@ -63,7 +58,7 @@ function createNLSymbols(data, map, layerControl, year) {
 };
 
 //function to add circle markers for AL teams
-function createALSymbols(data, map, layerControl, year) {
+function createALSymbols(data, map, layerControl) {
     const AL_LAYER = L.geoJson(data, {
         pointToLayer: pointToLayer,
         filter: pullALTeams
