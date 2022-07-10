@@ -28,7 +28,7 @@ function createMap() {
     L.control.timelineSlider({
         timelineItems: ["2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"],
         extraChangeMapParams: {greeting: "Hello World!"},
-        changeMap: getData(MAP, layerControl, value)
+        changeMap: resizeMarkers()
     })
     .addTo(MAP);
 
@@ -37,24 +37,19 @@ function createMap() {
 };
 
 //function to import MLB geoJSON datas
-function getData(map, layerControl, year) {
-    //remove all existing layers form map to overwrite
-    map.eachLayer(function (layer) {
-        map.removeLayer(layer);
-    });
-
+function getData(map, layerControl) {
     $.ajax("data/MLBStadiumsData.geojson", {
         dataType: "json",
         success: function(response) {
             //call functions to create proportional symbol layers
-            createNLSymbols(response, map, layerControl, year);
-            createALSymbols(response, map, layerControl, year);
+            createNLSymbols(response, map, layerControl);
+            createALSymbols(response, map, layerControl);
         }
     });
 };
 
 //function to add circle markers for NL teams
-function createNLSymbols(data, map, layerControl, year) {
+function createNLSymbols(data, map, layerControl) {
     const NL_LAYER = L.geoJson(data, {
         pointToLayer: pointToLayer(year),
         filter: pullNLTeams
@@ -64,7 +59,7 @@ function createNLSymbols(data, map, layerControl, year) {
 };
 
 //function to add circle markers for AL teams
-function createALSymbols(data, map, layerControl, year) {
+function createALSymbols(data, map, layerControl) {
     const AL_LAYER = L.geoJson(data, {
         pointToLayer: pointToLayer(year),
         filter: pullALTeams
@@ -88,7 +83,8 @@ function pullALTeams(feature) {
 };
 
 //function to convert default point markers to circle markers
-function pointToLayer(feature, latlng, year) {
+function pointToLayer(feature, latlng) {
+    var attribute = "2021";
 
     //generic marker options consistent to every feature
     var geojsonMarkerOptions = {
@@ -98,7 +94,7 @@ function pointToLayer(feature, latlng, year) {
         fillOpacity: 0.8
     };
 
-    var attValue = Number(feature.properties[year]);
+    var attValue = Number(feature.properties[attribute]);
 
     //call radius and color functions to populate marker options
     geojsonMarkerOptions.radius = calcPropRadius(attValue);
