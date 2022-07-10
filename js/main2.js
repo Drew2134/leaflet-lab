@@ -26,9 +26,9 @@ function createMap() {
     layerControl.addBaseLayer(DARK, "Dark");
 
     L.control.timelineSlider({
-        timelineItems: ["Day 1", "The Next Day", "Amazing Event", "1776", "12/22/63", "1984"],
+        timelineItems: ["2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"],
         extraChangeMapParams: {greeting: "Hello World!"},
-        changeMap: function({label, value, map}) { console.log("You are not using the value or label from the timeline to change the map."); }
+        changeMap: getData(MAP, layerControl, value)
     })
     .addTo(MAP);
 
@@ -37,21 +37,26 @@ function createMap() {
 };
 
 //function to import MLB geoJSON datas
-function getData(map, layerControl) {
+function getData(map, layerControl, year) {
+    //remove all existing layers form map to overwrite
+    map.eachLayer(function (layer) {
+        map.removeLayer(layer);
+    });
+
     $.ajax("data/MLBStadiumsData.geojson", {
         dataType: "json",
         success: function(response) {
             //call functions to create proportional symbol layers
-            createNLSymbols(response, map, layerControl);
-            createALSymbols(response, map, layerControl);
+            createNLSymbols(response, map, layerControl, year);
+            createALSymbols(response, map, layerControl, year);
         }
     });
 };
 
 //function to add circle markers for NL teams
-function createNLSymbols(data, map, layerControl) {
+function createNLSymbols(data, map, layerControl, year) {
     const NL_LAYER = L.geoJson(data, {
-        pointToLayer: pointToLayer,
+        pointToLayer: pointToLayer(year),
         filter: pullNLTeams
     }).addTo(map);
 
@@ -59,9 +64,9 @@ function createNLSymbols(data, map, layerControl) {
 };
 
 //function to add circle markers for AL teams
-function createALSymbols(data, map, layerControl) {
+function createALSymbols(data, map, layerControl, year) {
     const AL_LAYER = L.geoJson(data, {
-        pointToLayer: pointToLayer,
+        pointToLayer: pointToLayer(year),
         filter: pullALTeams
     }).addTo(map);
 
@@ -83,8 +88,7 @@ function pullALTeams(feature) {
 };
 
 //function to convert default point markers to circle markers
-function pointToLayer(feature, latlng) {
-    var attribute = "2021";
+function pointToLayer(feature, latlng, year) {
 
     //generic marker options consistent to every feature
     var geojsonMarkerOptions = {
@@ -94,7 +98,7 @@ function pointToLayer(feature, latlng) {
         fillOpacity: 0.8
     };
 
-    var attValue = Number(feature.properties[attribute]);
+    var attValue = Number(feature.properties[year]);
 
     //call radius and color functions to populate marker options
     geojsonMarkerOptions.radius = calcPropRadius(attValue);
