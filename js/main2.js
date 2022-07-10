@@ -31,27 +31,27 @@ function createMap() {
         extraChangeMapParams: {
             layerControl: layerControl
         },
-        changeMap: getData
+        changeMap: updatePropSymbols
     })
     .addTo(MAP);
+
+    getData(MAP, layerControl);
 };
 
 //function to import MLB geoJSON data
-function getData({value, label, map, layerControl}) {
-    console.log(value, label, map, layerControl)
-    let attribute = Number(label);
+function getData(map, layerControl) {
     $.ajax("data/MLBStadiumsData.geojson", {
         dataType: "json",
         success: function(response) {
             //call functions to create proportional symbol layers
-            createNLSymbols(response, map, 2012, layerControl);
-            createALSymbols(response, map, 2012, layerControl);
+            createNLSymbols(response, map, layerControl);
+            createALSymbols(response, map, layerControl);
         }
     });
 };
 
 //function to add circle markers for NL teams
-function createNLSymbols(data, map, year, layerControl) {
+function createNLSymbols(data, map, layerControl) {
     const NL_LAYER = L.geoJson(data, {
         pointToLayer: pointToLayer,
         filter: pullNLTeams
@@ -61,7 +61,7 @@ function createNLSymbols(data, map, year, layerControl) {
 };
 
 //function to add circle markers for AL teams
-function createALSymbols(data, map, year, layerControl) {
+function createALSymbols(data, map, layerControl) {
     const AL_LAYER = L.geoJson(data, {
         pointToLayer: pointToLayer,
         filter: pullALTeams
@@ -87,7 +87,7 @@ function pullALTeams(feature) {
 //function to convert default point markers to circle markers
 function pointToLayer(feature, latlng) {
     console.log(feature, latlng, mapParams)
-    var attribute = mapParams.label;
+    var attribute = "2012"
 
     //generic marker options consistent to every feature
     var geojsonMarkerOptions = {
@@ -170,3 +170,7 @@ function calcPropRadius(attValue) {
 
     return radius;
 };
+
+function updatePropSymbols() {
+    console.log("TIME SLIDE")
+}
