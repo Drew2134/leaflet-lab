@@ -28,7 +28,7 @@ function createMap() {
     //add time slider widget
     L.control.timelineSlider({
         timelineItems: ["2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"],
-        changeMap: getData(MAP, layerControl)
+        changeMap: changeMap
     })
     .addTo(MAP);
 };
@@ -163,4 +163,8 @@ function calcPropRadius(attValue) {
     var radius = Math.sqrt(area/Math.PI);
 
     return radius;
+};
+
+changeMap = function( {label, value, map, exclamation} ) {
+    console.log(label);
 };
