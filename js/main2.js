@@ -87,7 +87,7 @@ function pullALTeams(feature) {
 //function to convert default point markers to circle markers
 function pointToLayer(feature, latlng) {
     console.log(feature, latlng, mapParams)
-    var attribute = Number(mapParams.label);
+    var attribute = mapParams.label;
 
     //generic marker options consistent to every feature
     var geojsonMarkerOptions = {
