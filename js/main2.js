@@ -36,7 +36,7 @@ function createMap() {
     .addTo(MAP);
 };
 
-//function to import MLB geoJSON datas
+//function to import MLB geoJSON data
 function getData({value, label, map, layerControl}) {
     console.log(value, label, map, layerControl)
     let attribute = Number(label);
