@@ -39,7 +39,7 @@ function createMap() {
 //function to import MLB geoJSON datas
 function getData({value, label, map, layerControl}) {
     console.log(value, label, map, layerControl)
-    let attribute = parseInt(label);
+    let attribute = Number(label);
     $.ajax("data/MLBStadiumsData.geojson", {
         dataType: "json",
         success: function(response) {
@@ -51,7 +51,7 @@ function getData({value, label, map, layerControl}) {
 };
 
 //function to add circle markers for NL teams
-function createNLSymbols(data, map, layerControl, year) {
+function createNLSymbols(data, map, year, layerControl) {
     const NL_LAYER = L.geoJson(data, {
         pointToLayer: pointToLayer,
         filter: pullNLTeams
