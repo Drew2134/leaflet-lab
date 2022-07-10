@@ -38,13 +38,14 @@ function createMap() {
 
 //function to import MLB geoJSON datas
 function getData({value, label, map, layerControl}) {
-    console.log(label, map, layerControl)
+    console.log(value, label, map, layerControl)
+    let attribute = parseInt(label);
     $.ajax("data/MLBStadiumsData.geojson", {
         dataType: "json",
         success: function(response) {
             //call functions to create proportional symbol layers
-            createNLSymbols(response, map, layerControl, value);
-            createALSymbols(response, map, layerControl, value);
+            createNLSymbols(response, map, layerControl, attribute);
+            createALSymbols(response, map, layerControl, attribute);
         }
     });
 };
