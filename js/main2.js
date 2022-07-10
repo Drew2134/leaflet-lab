@@ -53,7 +53,7 @@ function getData({value, label, map, layerControl}) {
 //function to add circle markers for NL teams
 function createNLSymbols(data, map, year, layerControl) {
     const NL_LAYER = L.geoJson(data, {
-        pointToLayer: pointToLayer,
+        pointToLayer: pointToLayer(feature, latlng, year),
         filter: pullNLTeams
     }).addTo(map);
 
