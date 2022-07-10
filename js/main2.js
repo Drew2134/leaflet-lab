@@ -86,7 +86,7 @@ function pullALTeams(feature) {
 
 //function to convert default point markers to circle markers
 function pointToLayer(feature, latlng, year) {
-    console.log(year)
+    console.log(feature, latlng, year)
     var attribute = year;
 
     //generic marker options consistent to every feature
