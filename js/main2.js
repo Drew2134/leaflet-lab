@@ -41,14 +41,14 @@ function getData(map, layerControl) {
         dataType: "json",
         success: function(response) {
             //call functions to create proportional symbol layers
-            createNLSymbols(response, map, layerControl);
-            createALSymbols(response, map, layerControl);
+            createNLSymbols(response, map, layerControl, value);
+            createALSymbols(response, map, layerControl, value);
         }
     });
 };
 
 //function to add circle markers for NL teams
-function createNLSymbols(data, map, layerControl) {
+function createNLSymbols(data, map, layerControl, year) {
     const NL_LAYER = L.geoJson(data, {
         pointToLayer: pointToLayer,
         filter: pullNLTeams
@@ -58,7 +58,7 @@ function createNLSymbols(data, map, layerControl) {
 };
 
 //function to add circle markers for AL teams
-function createALSymbols(data, map, layerControl) {
+function createALSymbols(data, map, layerControl, year) {
     const AL_LAYER = L.geoJson(data, {
         pointToLayer: pointToLayer,
         filter: pullALTeams
@@ -82,8 +82,8 @@ function pullALTeams(feature) {
 };
 
 //function to convert default point markers to circle markers
-function pointToLayer(feature, latlng) {
-    var attribute = "2021";
+function pointToLayer(feature, latlng, year) {
+    var attribute = year;
 
     //generic marker options consistent to every feature
     var geojsonMarkerOptions = {
