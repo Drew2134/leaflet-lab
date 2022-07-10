@@ -35,7 +35,7 @@ function createMap() {
 
 //function to import MLB geoJSON datas
 function getData(map, layerControl) {
-    let value = map.value
+    let value = map.label
     console.log(value)
     $.ajax("data/MLBStadiumsData.geojson", {
         dataType: "json",
