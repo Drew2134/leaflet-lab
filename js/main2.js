@@ -31,9 +31,6 @@ function createMap() {
         changeMap: getData(MAP, layerControl)
     })
     .addTo(MAP);
-
-    //call function to get MLB data
-    getData(MAP, layerControl);
 };
 
 //function to import MLB geoJSON datas
