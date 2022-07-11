@@ -171,5 +171,5 @@ function calcPropRadius(attValue) {
 };
 
 function updatePropSymbols() {
-    console.log("TIME SLIDE")
+    console.log(mapParams)
 }
