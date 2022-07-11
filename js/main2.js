@@ -174,7 +174,7 @@ function updatePropSymbols() {
     let year = mapParams.label;
     mapParams.map.eachLayer(function(layer){
         if (layer.feature && layer.feature.properties[year]){
-            console.log("test")
+            console.log(layer.feature.properties)
         };
     });
 }
