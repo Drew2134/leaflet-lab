@@ -42,6 +42,9 @@ function createMap() {
 
     //call initial data gather function for symbols
     getData(MAP, layerControl);
+
+    //call function to add map title
+    addMapTitle(MAP);
 };
 
 //function to import MLB geoJSON data
@@ -102,7 +105,7 @@ function pointToLayer(feature, latlng) {
         fillOpacity: 0.8
     };
 
-    var attribute = "2012"
+    var attribute = "2012";
     var attValue = Number(feature.properties[attribute]);
 
     //call radius and color functions to populate marker options
@@ -188,11 +191,15 @@ function updatePropSymbols() {
             var radius = calcPropRadius(props[year]);
             layer.setRadius(radius);
 
-            var popupContent = "<p><b>" + props.Team + "<br>" + year + " Value: </b>$" + props[year].toLocaleString() + "M</p>"
+            var popupContent = "<p><b>" + props.Team + "<br>" + year + " Value: </b>$" + props[year].toLocaleString() + "M</p>";
 
             layer.bindPopup(popupContent, {
                 offset: new L.Point(0, -radius)
-            })
+            });
         };
     });
+}
+
+function addMapTitle(map) {
+    map.addControl(title, position = "topleft")
 }
