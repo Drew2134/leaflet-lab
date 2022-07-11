@@ -31,7 +31,7 @@ function createMap() {
         extraChangeMapParams: {
             layerControl: layerControl
         },
-        changeMap: updatePropSymbols(MAP)
+        changeMap: updatePropSymbols
     })
     .addTo(MAP);
 
