@@ -171,9 +171,10 @@ function calcPropRadius(attValue) {
 };
 
 function updatePropSymbols(map) {
-    let year = mapParams.label;
+    console.log(mapParams);
+    //let year = mapParams.label;
     map.eachLayer(function(layer){
-        if (layer.feature && layer.feature.properties[attribute]){
+        if (layer.feature && layer.feature.properties[year]){
             console.log("layer")
         };
     });
