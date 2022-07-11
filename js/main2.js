@@ -174,7 +174,10 @@ function updatePropSymbols() {
     let year = mapParams.label;
     mapParams.map.eachLayer(function(layer){
         if (layer.feature && layer.feature.properties[year]){
-            console.log(layer.feature.properties)
+            let props = layer.feature.properties;
+
+            var radius = calcPropRadius(props[year]);
+            layer.setRadius(radius);
         };
     });
 }
