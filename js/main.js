@@ -1,6 +1,92 @@
+$(document).ready(createMap);
+
+//function to generate map and view with OSM tiles
+function createMap() {
+    //tie map to viewDiv in HTML. Set center to center of U.S. and zoom of 5
+    const MAP = L.map("viewDiv", {
+        center: [39.8283, -98.5795],
+        zoom: 4
+    });
+
+    //grab humanitarian style OSM tiles
+    const HUMAN_BASE = L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
+        minZoom: 4,
+        maxZoom: 19,
+        attribution: "&copy OpenStreetMap"
+    }).addTo(MAP);
+
+    const DARK = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png", {
+        minZoom: 4,
+        maxZoom: 19,
+        attribution: "&copy OpenStreetMap &copy CARTO"
+    });
+    
+    var layerControl = L.control.layers().addTo(MAP);
+    layerControl.addBaseLayer(HUMAN_BASE, "Humanitarian");
+    layerControl.addBaseLayer(DARK, "Dark");
+
+    //add time slider widget
+    L.control.timelineSlider({
+        timelineItems: ["2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"],
+        extraChangeMapParams: {
+            layerControl: layerControl
+        },
+        changeMap: updatePropSymbols
+    })
+    .addTo(MAP);
+
+    getData(MAP, layerControl);
+};
+
+//function to import MLB geoJSON data
+function getData(map, layerControl) {
+    $.ajax("data/MLBStadiumsData.geojson", {
+        dataType: "json",
+        success: function(response) {
+            //call functions to create proportional symbol layers
+            createNLSymbols(response, map, layerControl);
+            createALSymbols(response, map, layerControl);
+        }
+    });
+};
+
+//function to add circle markers for NL teams
+function createNLSymbols(data, map, layerControl) {
+    const NL_LAYER = L.geoJson(data, {
+        pointToLayer: pointToLayer,
+        filter: pullNLTeams
+    }).addTo(map);
+
+    layerControl.addOverlay(NL_LAYER, "National League");
+};
+
+//function to add circle markers for AL teams
+function createALSymbols(data, map, layerControl) {
+    const AL_LAYER = L.geoJson(data, {
+        pointToLayer: pointToLayer,
+        filter: pullALTeams
+    }).addTo(map);
+
+    layerControl.addOverlay(AL_LAYER, "American League");
+};
+
+//filter function for getting NL teams
+function pullNLTeams(feature) {
+    if (feature.properties.Conference == "National League") {
+        return true;
+    }
+};
+
+//filter function for getting AL Teams
+function pullALTeams(feature) {
+    if (feature.properties.Conference == "American League") {
+        return true;
+    }
+};
+
 //function to convert default point markers to circle markers
 function pointToLayer(feature, latlng) {
-    var attribute = "yr2021";
+    var attribute = "2012"
 
     //generic marker options consistent to every feature
     var geojsonMarkerOptions = {
@@ -14,16 +100,17 @@ function pointToLayer(feature, latlng) {
 
     //call radius and color functions to populate marker options
     geojsonMarkerOptions.radius = calcPropRadius(attValue);
-    geojsonMarkerOptions.fillColor = calcSymbolColor(feature.properties.conference)
+    geojsonMarkerOptions.fillColor = calcSymbolColor(feature.properties.Conference)
 
     //create marker with calculated options
     var teamMarker = L.circleMarker(latlng, geojsonMarkerOptions);
 
     var team = feature.properties.Team;
     var teamLogo = "img/" + team.replace(/ /g, "_") + ".png";
+    var teamValue = feature.properties[attribute];
 
     //build html content for popup
-    var popupContent = "<p>" + team + "</p>";
+    var popupContent = "<p><b>" + team + "<br> 2012 Value: </b>$" + teamValue.toLocaleString() + "M</p>";
 
     //build html content for info panel
     var fieldName = Object.keys(feature.properties);
@@ -31,22 +118,11 @@ function pointToLayer(feature, latlng) {
     var panelTable = "<table id='infoTable'>"
 
     for(let i=0; i < fieldName.length; i++) {
-        //formatting field names and values for table
+        //find value fields and format numbers
         if(fieldName[i].toString().startsWith("20")) {
-            fieldName[i] = fieldName[i].toString().slice(2);
             fieldValue[i] = "$" + fieldValue[i].toLocaleString();
-        } else if (i == 11) {
-            fieldName[i] = "Stadium Name";
-        } else if (i == 12) {
-            fieldName[i] = "Capacity";
-            fieldValue[i] = fieldValue[i].toLocaleString();
-        } else if (i == 13) {
-            fieldName[i] = "Conference";
-        } else {
-            fieldName[i] = "Division";
         }
-        
-        
+        //add data to row and add row to table
         panelTable += "<tr><th>" + fieldName[i] + "</th><td>" + fieldValue[i] + "</td></tr>";
     };
 
@@ -57,8 +133,7 @@ function pointToLayer(feature, latlng) {
 
     //bind popup event to marker
     teamMarker.bindPopup(popupContent, {
-        offset: new L.Point(0, -geojsonMarkerOptions.radius),
-        maxWidth: "auto"
+        offset: new L.Point(0, -geojsonMarkerOptions.radius)
     });
 
     teamMarker.on({
@@ -95,60 +170,20 @@ function calcPropRadius(attValue) {
     return radius;
 };
 
-function addWidgets(map, layer) {
-    var controlSearch = new L.Control.Search({
-		position:'topleft',		
-		layer: layer,
-        propertyName: "Team",
-		initial: false,
-		zoom: 12,
-		marker: false
-	});
+function updatePropSymbols() {
+    let year = mapParams.label;
+    mapParams.map.eachLayer(function(layer){
+        if (layer.feature && layer.feature.properties[year]){
+            let props = layer.feature.properties;
 
-	map.addControl(controlSearch);
+            var radius = calcPropRadius(props[year]);
+            layer.setRadius(radius);
+
+            var popupContent = "<p><b>" + props.Team + "<br>" + year + " Value: </b>$" + props[year].toLocaleString() + "M</p>"
+
+            layer.bindPopup(popupContent, {
+                offset: new L.Point(0, -radius)
+            })
+        };
+    });
 }
-//function to add circle markers to map
-function createPropSymbols(data, map) {
-    const LAYER = L.geoJson(data, {
-        pointToLayer: pointToLayer
-    }).addTo(map);
-
-    map.fitBounds(LAYER.getBounds());
-
-    addWidgets(map, LAYER);
-};
-
-//function to import MLB geoJSON data
-function getData(map){
-    $.ajax("data/MLBStadiumsData.geojson", {
-        dataType: "json",
-        success: function(response){
-
-            //call function to create proportional symbols
-            createPropSymbols(response, map);
-        }
-    });
-};
-
-//function to generate map and view with openstreetmap tile
-function createMap() {
-    //tie map to viewDiv in HTML. Set center to center of U.S. and zoom of 4
-    const MAP = L.map('viewDiv', {
-        center: [39.8283, -98.5795],
-        zoom: 5
-    });
-
-    //link to humanitarian style OSM tiles
-    L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
-        minZoom: 4,
-        maxZoom: 19,
-        attribution: "&copy OpenStreetMap"
-    }).addTo(MAP);
-
-    //call function to get MLB data
-    getData(MAP)
-};
-
-$(document).ready(createMap);
-
-//CREDIT FOR TEAM LOGOS: SportsLogos.net
