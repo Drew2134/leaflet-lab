@@ -109,7 +109,7 @@ function pointToLayer(feature, latlng) {
     var teamLogo = "img/" + team.replace(/ /g, "_") + ".png";
 
     //build html content for popup
-    var popupContent = "<p>" + team + "</p>";
+    var popupContent = "<p><b>" + team + "<br> 2012 Value: </b>" + feature.properties.attribute + "</p>";
 
     //build html content for info panel
     var fieldName = Object.keys(feature.properties);
