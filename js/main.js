@@ -156,6 +156,7 @@ function pointToLayer(feature, latlng) {
         },
         click: function() {
             $("#panel").html(panelContent);
+            $("#panel").style.display = block;
         }
     });
 
