@@ -108,11 +108,9 @@ function pointToLayer(feature, latlng) {
     var team = feature.properties.Team;
     var teamLogo = "img/" + team.replace(/ /g, "_") + ".png";
     var teamValue = feature.properties[attribute];
-    console.log(teamValue)
-    console.log(teamValue.toLocaleString())
 
     //build html content for popup
-    var popupContent = "<p><b>" + team + "<br> 2012 Value: </b>$" + teamValue + "</p>";
+    var popupContent = "<p><b>" + team + "<br> 2012 Value: </b>$" + teamValue.toLocaleString() + "M</p>";
 
     //build html content for info panel
     var fieldName = Object.keys(feature.properties);
@@ -181,7 +179,7 @@ function updatePropSymbols() {
             var radius = calcPropRadius(props[year]);
             layer.setRadius(radius);
 
-            var popupContent = "<p><b>" + props.Team + "<br>" + year + " Value: </b>$" + props[year].toLocaleString() + "</p>"
+            var popupContent = "<p><b>" + props.Team + "<br>" + year + " Value: </b>$" + props[year].toLocaleString() + "M</p>"
 
             layer.bindPopup(popupContent, {
                 offset: new L.Point(0, -radius)
