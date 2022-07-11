@@ -31,7 +31,7 @@ function createMap() {
         extraChangeMapParams: {
             layerControl: layerControl
         },
-        changeMap: updatePropSymbols
+        changeMap: updatePropSymbols(MAP)
     })
     .addTo(MAP);
 
@@ -170,7 +170,7 @@ function calcPropRadius(attValue) {
     return radius;
 };
 
-function updatePropSymbols() {
+function updatePropSymbols(map) {
     let year = mapParams.label;
     map.eachLayer(function(layer){
         if (layer.feature && layer.feature.properties[attribute]){
