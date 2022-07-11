@@ -205,8 +205,8 @@ function addMapTitle(map) {
 		onAdd: function(map) {
 			
 		var text = L.DomUtil.create('div');
-		text.id = "info_text";
-		text.innerHTML = "<strong>text here</strong>"
+		text.id = "infoText";
+		text.innerHTML = "<b>MLB Franchise Values</b>"
 		return text;
 		},
 
@@ -215,5 +215,5 @@ function addMapTitle(map) {
 		}
 	});
 	L.control.textbox = function(opts) { return new L.Control.textbox(opts);}
-	L.control.textbox({ position: 'bottomleft' }).addTo(map);
+	L.control.textbox({ position: 'topleft' }).addTo(map);
 }
