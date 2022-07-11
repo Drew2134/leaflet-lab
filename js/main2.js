@@ -178,7 +178,7 @@ function updatePropSymbols() {
             var radius = calcPropRadius(props[year]);
             layer.setRadius(radius);
 
-            var popupContent = "<p><b>" + props.Team + "<br>" + year + "value: $" + "</b>" + props[year] + "</p>"
+            var popupContent = "<p><b>" + props.Team + "<br>" + year + " Value: $" + "</b>" + props[year] + "</p>"
 
             layer.bindPopup(popupContent, {
                 offset: new L.Point(0, -radius)
