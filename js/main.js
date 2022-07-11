@@ -8,20 +8,23 @@ function createMap() {
         zoom: 4
     });
 
-    //grab humanitarian style OSM tiles
+    //link to humanitarian style OSM tiles and add to map
     const HUMAN_BASE = L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
         minZoom: 4,
         maxZoom: 19,
         attribution: "&copy OpenStreetMap"
     }).addTo(MAP);
 
+    //link to dark gray basemap
     const DARK = L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png", {
         minZoom: 4,
         maxZoom: 19,
         attribution: "&copy OpenStreetMap &copy CARTO"
     });
     
+    //add layer control widget to map
     var layerControl = L.control.layers().addTo(MAP);
+    //add basemap layers to BaseLayer section of layer control widget
     layerControl.addBaseLayer(HUMAN_BASE, "Humanitarian");
     layerControl.addBaseLayer(DARK, "Dark");
 
@@ -29,12 +32,15 @@ function createMap() {
     L.control.timelineSlider({
         timelineItems: ["2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"],
         extraChangeMapParams: {
+            //pass layerControl variable as additional param to updatePropSymbols
             layerControl: layerControl
         },
+        //call updatePropSymbols every time slider moves
         changeMap: updatePropSymbols
     })
     .addTo(MAP);
 
+    //call initial data gather function for symbols
     getData(MAP, layerControl);
 };
 
@@ -57,6 +63,7 @@ function createNLSymbols(data, map, layerControl) {
         filter: pullNLTeams
     }).addTo(map);
 
+    //add NL layer to Overlay section of layer control widget
     layerControl.addOverlay(NL_LAYER, "National League");
 };
 
@@ -67,6 +74,7 @@ function createALSymbols(data, map, layerControl) {
         filter: pullALTeams
     }).addTo(map);
 
+    //add AL layer to Overlay section of layer control widget
     layerControl.addOverlay(AL_LAYER, "American League");
 };
 
@@ -86,8 +94,6 @@ function pullALTeams(feature) {
 
 //function to convert default point markers to circle markers
 function pointToLayer(feature, latlng) {
-    var attribute = "2012"
-
     //generic marker options consistent to every feature
     var geojsonMarkerOptions = {
         color: "#000",
@@ -96,6 +102,7 @@ function pointToLayer(feature, latlng) {
         fillOpacity: 0.8
     };
 
+    var attribute = "2012"
     var attValue = Number(feature.properties[attribute]);
 
     //call radius and color functions to populate marker options
@@ -115,8 +122,9 @@ function pointToLayer(feature, latlng) {
     //build html content for info panel
     var fieldName = Object.keys(feature.properties);
     var fieldValue = Object.values(feature.properties);
-    var panelTable = "<table id='infoTable'>"
 
+    //create html table with team details
+    var panelTable = "<table id='infoTable'>"
     for(let i=0; i < fieldName.length; i++) {
         //find value fields and format numbers
         if(fieldName[i].toString().startsWith("20")) {
@@ -125,7 +133,6 @@ function pointToLayer(feature, latlng) {
         //add data to row and add row to table
         panelTable += "<tr><th>" + fieldName[i] + "</th><td>" + fieldValue[i] + "</td></tr>";
     };
-
     panelTable += "</table>";
     
     var panelNotes = "<p>*franchise values are estimates in millions";
@@ -136,6 +143,7 @@ function pointToLayer(feature, latlng) {
         offset: new L.Point(0, -geojsonMarkerOptions.radius)
     });
 
+    //event listeners for points
     teamMarker.on({
         mouseover: function() {
             this.openPopup();
@@ -170,6 +178,7 @@ function calcPropRadius(attValue) {
     return radius;
 };
 
+//function to update proportial symbols when time slider changes
 function updatePropSymbols() {
     let year = mapParams.label;
     mapParams.map.eachLayer(function(layer){
