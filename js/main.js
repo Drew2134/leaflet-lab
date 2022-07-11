@@ -157,6 +157,8 @@ function pointToLayer(feature, latlng) {
         click: function() {
             $("#panel").html(panelContent);
             document.getElementById("panel").style.display = "block";
+            document.getElementById("infoText").style.left = "50%";
+            document.getElementById("infoText").style.transform = "translateX(-50%)";
         }
     });
 
