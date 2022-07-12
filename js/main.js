@@ -56,8 +56,10 @@ function createMap() {
     addMapTitle(MAP);
 
     var searchLayers = L.layerGroup(
-        [$('.leaflet-control-layers-selector:checked')]
-    );
+        [$('.leaflet-control-layers-selector:checked')[1],
+        $('.leaflet-control-layers-selector:checked')[2]
+    ]);
+    
     var searchControl = new L.Control.Search({
 		position:'topleft',		
 		layer: searchLayers,
