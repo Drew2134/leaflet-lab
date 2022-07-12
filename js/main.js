@@ -228,8 +228,12 @@ function addMapTitle(map) {
 			// Nothing to do here
 		}
 	});
-	L.control.textbox = function(opts) { return new L.Control.textbox(opts);}
-	L.control.textbox({ position: 'topleft' }).addTo(map);
+	L.control.textbox = function(opts) {
+        return new L.Control.textbox(opts);
+    }
+	L.control.textbox({
+        position: 'topleft'
+    }).addTo(map);
 }
 
 //watch for window resize so map title stays centered
