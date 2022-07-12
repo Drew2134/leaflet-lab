@@ -250,12 +250,14 @@ function addSearchControl(map) {
     map.eachLayer(function(layer) {
         if (layer instanceof L.circleMarker) {
             layers.push(layer);
+            console.log(layer)
         }
     })
+    console.log(layers)
     
     var searchControl = new L.Control.Search({
         position:'topleft',
-        layer: null, //need to attach to existing layers
+        layer: layers, //need to attach to existing layers
         initial: false,
         zoom: 12,
         marker: false
