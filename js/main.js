@@ -50,16 +50,14 @@ function createMap() {
     .addTo(MAP);
 
     //call initial data gather function for symbols
-    getData(MAP, layerControl);
+    getData(MAP, layerControl, addSearchControl(MAP));
 
     //call function to add map title
     addMapTitle(MAP);
-
-    addSearchControl(MAP);
 };
 
 //function to import MLB geoJSON data
-function getData(map, layerControl) {
+function getData(map, layerControl, callback) {
     $.ajax("data/MLBStadiumsData.geojson", {
         dataType: "json",
         success: function(response) {
@@ -68,6 +66,8 @@ function getData(map, layerControl) {
             createALSymbols(response, map, layerControl);
         }
     });
+
+    callback()
 };
 
 //function to add circle markers for NL teams
