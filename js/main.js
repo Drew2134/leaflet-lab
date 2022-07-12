@@ -244,19 +244,10 @@ window.onresize = function(event) {
 }
 
 function addSearchControl(map) {
-
-    var layers = L.layerGroup([$.ajax("data/MLBStadiumsData.geojson", {
-        dataType: "json",
-        success: function(response) {
-            //call functions to create proportional symbol layers
-            createNLSymbols(response, map, layerControl);
-            createALSymbols(response, map, layerControl);
-        }
-    })])
     
     var searchControl = new L.Control.Search({
         position:'topleft',
-        layer: layers, //need to attach to existing layers
+        layer: null, //need to attach to existing layers
         initial: false,
         zoom: 12,
         marker: false
