@@ -32,6 +32,8 @@ function createMap() {
             document.getElementById("infoText").style.backgroundColor = "rgba(0, 0, 0, 0.35)";
         } else if (layerControl.baseLayer == "DARK") {
             document.getElementById("infoText").style.backgroundColor = "rgba(255, 255, 255, 0.35)";
+        } else {
+            console.log("YOU SUCK")
         }
     });
 
