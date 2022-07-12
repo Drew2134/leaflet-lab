@@ -27,6 +27,13 @@ function createMap() {
     //add basemap layers to BaseLayer section of layer control widget
     layerControl.addBaseLayer(HUMAN_BASE, "Humanitarian");
     layerControl.addBaseLayer(DARK, "Dark");
+    MAP.on("baselayerchange", function(event) {
+        if (layerControl.baseLayer == "HUMAN_BASE") {
+            document.getElementById("infoText").style.backgroundColor = "rgba(0, 0, 0, 0.35)";
+        } else if (layerControl.baseLayer == "DARK") {
+            document.getElementById("infoText").style.backgroundColor = "rgba(255, 255, 255, 0.35)";
+        }
+    });
 
     //add time slider widget
     L.control.timelineSlider({
