@@ -27,7 +27,9 @@ function createMap() {
     //add basemap layers to BaseLayer section of layer control widget
     layerControl.addBaseLayer(HUMAN_BASE, "Humanitarian");
     layerControl.addBaseLayer(DARK, "Dark");
+    //listen for basemap change
     MAP.on("baselayerchange", function(event) {
+        //change map title background depending on basemap
         if (event.name == "Humanitarian") {
             document.getElementById("infoText").style.backgroundColor = "rgba(0, 0, 0, 0.35)";
         } else if (event.name == "Dark") {
