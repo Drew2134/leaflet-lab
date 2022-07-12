@@ -33,7 +33,7 @@ function createMap() {
         if (event.name == "Humanitarian") {
             $("#infoText")[0].style.backgroundColor = "rgba(0, 0, 0, 0.35)";
         } else if (event.name == "Dark") {
-            document.getElementById("infoText").style.backgroundColor = "rgba(255, 255, 255, 0.35)";
+            $("#infoText")[0].style.backgroundColor = "rgba(255, 255, 255, 0.35)";
         }
     });
 
@@ -165,10 +165,10 @@ function pointToLayer(feature, latlng) {
         },
         click: function() {
             $("#panel").html(panelContent);
-            document.getElementById("panel").style.display = "block";
-            let mapCenter = (document.getElementById("viewDiv").offsetWidth / 2).toString() + "px";
-            document.getElementById("infoText").style.left = mapCenter;
-            document.getElementById("infoText").style.transform = "translateX(-50%)";
+            $("#panel")[0].style.display = "block";
+            let mapCenter = ($("#viewDiv")[0].offsetWidth / 2).toString() + "px";
+            $("#infoText")[0].style.left = mapCenter;
+            $("#infoText")[0].style.transform = "translateX(-50%)";
         }
     });
 
@@ -234,6 +234,6 @@ function addMapTitle(map) {
 
 //watch for window resize so map title stays centered
 window.onresize = function(event) {
-    let mapCenter = (document.getElementById("viewDiv").offsetWidth / 2).toString() + "px";
-    document.getElementById("infoText").style.left = mapCenter;
+    let mapCenter = ($("#viewDiv")[0].offsetWidth / 2).toString() + "px";
+    $("#infoText")[0].style.left = mapCenter;
 }
