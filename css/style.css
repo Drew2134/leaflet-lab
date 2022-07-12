@@ -70,7 +70,8 @@ th, td {
     left: 50%;
     transform: translateX(-50%);
     font-size: 28px;
-    background-color: rgba(0, 0, 0, 0.35);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: ivory;
     padding: 10px;
     border-radius: 10px;
     font-family: 'American Typewriter', serif;
