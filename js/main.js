@@ -250,7 +250,7 @@ function addSearchControl(map) {
 
     var layers = [];
     map.eachLayer(function(layer) {
-        if (layer instanceof L.circleMarker) {
+        if (!(layer instanceof L.tileLayer)) {
             layers.push(layer);
             console.log(layer)
         }
