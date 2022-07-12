@@ -37,6 +37,17 @@ function createMap() {
         }
     });
 
+    var searchLayer = new L.LayerGroup();
+    var searchControl = new L.Control.Search({
+        position:'topleft',
+        layer: searchLayer, //need to attach to existing layers
+        initial: false,
+        zoom: 12,
+        marker: false
+    });
+
+    MAP.addControl(searchControl);
+
     //add time slider widget
     L.control.timelineSlider({
         timelineItems: ["2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"],
@@ -48,13 +59,12 @@ function createMap() {
         changeMap: updatePropSymbols
     })
     .addTo(MAP);
+
     //call initial data gather function for symbols
     getData(MAP, layerControl);
 
     //call function to add map title
     addMapTitle(MAP);
-
-    addSearchControl(MAP)
 };
 
 //function to import MLB geoJSON data
@@ -242,19 +252,3 @@ window.onresize = function(event) {
     let mapCenter = ($("#viewDiv")[0].offsetWidth / 2).toString() + "px";
     $("#infoText")[0].style.left = mapCenter;
 }
-
-function addSearchControl(map) {
-    
-    var markersLayer = new L.LayerGroup();
-
-    var searchControl = new L.Control.Search({
-        position:'topleft',
-        layer: markersLayer, //need to attach to existing layers
-        initial: false,
-        zoom: 12,
-        marker: false
-    });
-
-    map.addControl(searchControl);
-}
-
