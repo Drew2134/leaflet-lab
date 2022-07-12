@@ -56,7 +56,7 @@ function createMap() {
     addMapTitle(MAP);
 
     var controlSearch = new L.Control.Search({
-		position:'topleft',		
+		position:'topright',		
 		layer: null,
 		initial: false,
 		zoom: 12,
