@@ -28,7 +28,11 @@ function createMap() {
     layerControl.addBaseLayer(HUMAN_BASE, "Humanitarian");
     layerControl.addBaseLayer(DARK, "Dark");
     MAP.on("baselayerchange", function(event) {
-        console.log(event.name)    
+        if (event.name == "Humanitarian") {
+            document.getElementById("infoText").style.backgroundColor = "rgba(0, 0, 0, 0.35)";
+        } else if (event.name == "Dark") {
+            document.getElementById("infoText").style.backgroundColor = "rgba(255, 255, 255, 0.35)";
+        }
     });
 
     //add time slider widget
