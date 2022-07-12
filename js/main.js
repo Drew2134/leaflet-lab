@@ -55,16 +55,7 @@ function createMap() {
     //call function to add map title
     addMapTitle(MAP);
 
-    var searchControl = new L.Control.Search({
-		position:'topleft',		
-		layer: null, //need to attach to existing layers
-		initial: false,
-		zoom: 12,
-		marker: false
-	});
-
-	MAP.addControl(searchControl);
-
+    addSearchControl(MAP);
 };
 
 //function to import MLB geoJSON data
@@ -252,3 +243,25 @@ window.onresize = function(event) {
     let mapCenter = ($("#viewDiv")[0].offsetWidth / 2).toString() + "px";
     $("#infoText")[0].style.left = mapCenter;
 }
+
+function addSearchControl(map) {
+
+    var layers = [];
+    map.eachLayer(function(layer) {
+        if (layer instanceof L.circleMarker) {
+            layers.push(layer);
+        }
+    })
+    
+    var searchControl = new L.Control.Search({
+        position:'topleft',
+        layer: null, //need to attach to existing layers
+        initial: false,
+        zoom: 12,
+        marker: false
+    });
+
+    map.addControl(searchControl);
+
+}
+
