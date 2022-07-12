@@ -221,3 +221,9 @@ function addMapTitle(map) {
 	L.control.textbox = function(opts) { return new L.Control.textbox(opts);}
 	L.control.textbox({ position: 'topleft' }).addTo(map);
 }
+
+//watch for window resize so map title stays centered
+window.onresize = function(event) {
+    let mapCenter = (document.getElementById("viewDiv").offsetWidth / 2).toString() + "px";
+    document.getElementById("infoText").style.left = mapCenter;
+}
