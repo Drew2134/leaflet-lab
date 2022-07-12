@@ -50,7 +50,9 @@ function createMap() {
     .addTo(MAP);
 
     //call initial data gather function for symbols
-    getData(MAP, layerControl, addSearchControl(MAP));
+    getData(MAP, layerControl, function() {
+        addSearchControl(MAP)
+    });
 
     //call function to add map title
     addMapTitle(MAP);
