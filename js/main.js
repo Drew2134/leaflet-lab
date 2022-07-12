@@ -50,16 +50,16 @@ function createMap() {
     .addTo(MAP);
 
     //call initial data gather function for symbols
-    getData(MAP, layerControl);
-
-    //call function to add map title
-    addMapTitle(MAP, function() {
+    getData(MAP, layerControl, function() {
         addSearchControl(MAP)
     });
+
+    //call function to add map title
+    addMapTitle(MAP);
 };
 
 //function to import MLB geoJSON data
-function getData(map, layerControl) {
+function getData(map, layerControl, callback) {
     $.ajax("data/MLBStadiumsData.geojson", {
         dataType: "json",
         success: function(response) {
@@ -68,6 +68,8 @@ function getData(map, layerControl) {
             createALSymbols(response, map, layerControl);
         }
     });
+
+    callback();
 };
 
 //function to add circle markers for NL teams
@@ -216,7 +218,7 @@ function updatePropSymbols() {
 }
 
 //add a custom map control to hold div with map title
-function addMapTitle(map, callback) {
+function addMapTitle(map) {
     L.Control.textbox = L.Control.extend({
 		onAdd: function(map) {
 			
@@ -236,8 +238,6 @@ function addMapTitle(map, callback) {
 	L.control.textbox({
         position: 'topleft'
     }).addTo(map);
-
-    callback()
 }
 
 //watch for window resize so map title stays centered
@@ -249,11 +249,10 @@ window.onresize = function(event) {
 function addSearchControl(map) {
 
     var layers = [];
-    map.eachLayer(function(layer) {
-        layers.push(layer);
+    console.log(mapParams.map.eachLayer(function(layer) {
         console.log(layer)
-})
-    console.log(layers)
+    }
+    ))
     
     var searchControl = new L.Control.Search({
         position:'topleft',
