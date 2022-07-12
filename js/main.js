@@ -157,7 +157,8 @@ function pointToLayer(feature, latlng) {
         click: function() {
             $("#panel").html(panelContent);
             document.getElementById("panel").style.display = "block";
-            document.getElementById("infoText").style.left = "50%";
+            let mapCenter = document.getElementById("viewDiv").offsetWidth;
+            document.getElementById("infoText").style.left = mapCenter;
             document.getElementById("infoText").style.transform = "translateX(-50%)";
         }
     });
@@ -218,5 +219,5 @@ function addMapTitle(map) {
 		}
 	});
 	L.control.textbox = function(opts) { return new L.Control.textbox(opts);}
-	L.control.textbox({ position: 'bottomleft' }).addTo(map);
+	L.control.textbox({ position: 'topleft' }).addTo(map);
 }
