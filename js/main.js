@@ -37,10 +37,10 @@ function createMap() {
         }
     });
 
-    var searchLayer = new L.LayerGroup();
+    var searchLayers = new L.LayerGroup();
     var searchControl = new L.Control.Search({
         position:'topleft',
-        layer: searchLayer, //need to attach to existing layers
+        layer: searchLayers, //need to attach to existing layers
         initial: false,
         zoom: 12,
         marker: false
@@ -61,41 +61,45 @@ function createMap() {
     .addTo(MAP);
 
     //call initial data gather function for symbols
-    getData(MAP, layerControl);
+    getData(MAP, layerControl, searchLayers);
 
     //call function to add map title
     addMapTitle(MAP);
 };
 
 //function to import MLB geoJSON data
-function getData(map, layerControl) {
+function getData(map, layerControl, layers) {
     $.ajax("data/MLBStadiumsData.geojson", {
         dataType: "json",
         success: function(response) {
             //call functions to create proportional symbol layers
-            createNLSymbols(response, map, layerControl);
-            createALSymbols(response, map, layerControl);
+            createNLSymbols(response, map, layerControl, layers);
+            createALSymbols(response, map, layerControl, layers);
         }
     });
 };
 
 //function to add circle markers for NL teams
-function createNLSymbols(data, map, layerControl) {
+function createNLSymbols(data, map, layerControl, layers) {
     const NL_LAYER = L.geoJson(data, {
         pointToLayer: pointToLayer,
         filter: pullNLTeams
     }).addTo(map);
+
+    layers.addLayer(NL_LAYER)
 
     //add NL layer to Overlay section of layer control widget
     layerControl.addOverlay(NL_LAYER, "National League");
 };
 
 //function to add circle markers for AL teams
-function createALSymbols(data, map, layerControl) {
+function createALSymbols(data, map, layerControl, layers) {
     const AL_LAYER = L.geoJson(data, {
         pointToLayer: pointToLayer,
         filter: pullALTeams
     }).addTo(map);
+
+    layers.addLayer(AL_LAYER)
 
     //add AL layer to Overlay section of layer control widget
     layerControl.addOverlay(AL_LAYER, "American League");
