@@ -157,7 +157,7 @@ function pointToLayer(feature, latlng) {
         click: function() {
             $("#panel").html(panelContent);
             document.getElementById("panel").style.display = "block";
-            let mapCenter = document.getElementById("viewDiv").offsetWidth.toString() + "px";
+            let mapCenter = (document.getElementById("viewDiv").offsetWidth / 2).toString() + "px";
             document.getElementById("infoText").style.left = mapCenter;
             document.getElementById("infoText").style.transform = "translateX(-50%)";
         }
