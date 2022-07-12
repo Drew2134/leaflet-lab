@@ -218,5 +218,5 @@ function addMapTitle(map) {
 		}
 	});
 	L.control.textbox = function(opts) { return new L.Control.textbox(opts);}
-	L.control.textbox({ position: 'topleft' }).addTo(map);
+	L.control.textbox({ position: 'bottomleft' }).addTo(map);
 }
