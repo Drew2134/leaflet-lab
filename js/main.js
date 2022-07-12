@@ -216,7 +216,7 @@ function updatePropSymbols() {
 }
 
 //add a custom map control to hold div with map title
-function addMapTitle(map) {
+function addMapTitle(map, callback) {
     L.Control.textbox = L.Control.extend({
 		onAdd: function(map) {
 			
@@ -236,6 +236,8 @@ function addMapTitle(map) {
 	L.control.textbox({
         position: 'topleft'
     }).addTo(map);
+
+    callback()
 }
 
 //watch for window resize so map title stays centered
