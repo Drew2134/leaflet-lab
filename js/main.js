@@ -57,7 +57,7 @@ function createMap() {
 
     var searchControl = new L.Control.Search({
 		position:'topleft',		
-		layer: null,
+		layer: $('.leaflet-control-layers-selector:checked'),
 		initial: false,
 		zoom: 12,
 		marker: false
