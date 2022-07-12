@@ -55,7 +55,7 @@ function createMap() {
     //call function to add map title
     addMapTitle(MAP);
 
-    var controlSearch = new L.Control.Search({
+    var searchControl = new L.Control.Search({
 		position:'topleft',		
 		layer: null,
 		initial: false,
@@ -63,7 +63,7 @@ function createMap() {
 		marker: false
 	});
 
-	MAP.addControl( controlSearch );
+	MAP.addControl(searchControl);
 
 };
 
