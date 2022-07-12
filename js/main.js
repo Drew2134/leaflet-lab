@@ -262,6 +262,5 @@ function addSearchControl(map) {
     });
 
     map.addControl(searchControl);
-
 }
 
