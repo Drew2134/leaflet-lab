@@ -31,9 +31,11 @@ function createMap() {
     MAP.on("baselayerchange", function(event) {
         //change map title background depending on basemap
         if (event.name == "Humanitarian") {
-            $("#infoText")[0].style.backgroundColor = "rgba(0, 0, 0, 0.35)";
+            $("#infoText")[0].style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+            $("#infoText")[0].style.color = "white";
         } else if (event.name == "Dark") {
-            $("#infoText")[0].style.backgroundColor = "rgba(255, 255, 255, 0.35)";
+            $("#infoText")[0].style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+            $("#infoText")[0].style.color = "black";
         }
     });
 
