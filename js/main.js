@@ -48,13 +48,13 @@ function createMap() {
         changeMap: updatePropSymbols
     })
     .addTo(MAP);
-
-    addSearchControl(MAP, layerControl)
     //call initial data gather function for symbols
-    //getData(MAP, layerControl);
+    getData(MAP, layerControl);
 
     //call function to add map title
     addMapTitle(MAP);
+
+    addSearchControl(MAP)
 };
 
 //function to import MLB geoJSON data
@@ -243,9 +243,16 @@ window.onresize = function(event) {
     $("#infoText")[0].style.left = mapCenter;
 }
 
-function addSearchControl(map, layerControl) {
+function addSearchControl(map) {
 
-    var layers = getData(map, layerControl)
+    var layers = L.layerGroup([$.ajax("data/MLBStadiumsData.geojson", {
+        dataType: "json",
+        success: function(response) {
+            //call functions to create proportional symbol layers
+            createNLSymbols(response, map, layerControl);
+            createALSymbols(response, map, layerControl);
+        }
+    })])
     
     var searchControl = new L.Control.Search({
         position:'topleft',
