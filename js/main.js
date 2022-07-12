@@ -245,9 +245,11 @@ window.onresize = function(event) {
 
 function addSearchControl(map) {
     
+    var markersLayer = new L.LayerGroup();
+
     var searchControl = new L.Control.Search({
         position:'topleft',
-        layer: null, //need to attach to existing layers
+        layer: markersLayer, //need to attach to existing layers
         initial: false,
         zoom: 12,
         marker: false
