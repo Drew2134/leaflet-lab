@@ -37,16 +37,18 @@ function createMap() {
         }
     });
 
+    //add layer group to use in search widget
     var searchLayers = new L.LayerGroup();
+    //add search control by team names
     var searchControl = new L.Control.Search({
         position:'topleft',
         propertyName: "Team",
-        layer: searchLayers, //need to attach to existing layers
+        layer: searchLayers,
         initial: false,
-        zoom: 12,
+        zoom: 11,
         marker: false
     });
-
+    //add search control to map
     MAP.addControl(searchControl);
 
     //add time slider widget
@@ -61,7 +63,8 @@ function createMap() {
     })
     .addTo(MAP);
 
-    //call initial data gather function for symbols
+    //call data gather function
+    //pass layerControl and searchLayers widgets
     getData(MAP, layerControl, searchLayers);
 
     //call function to add map title
@@ -87,6 +90,7 @@ function createNLSymbols(data, map, layerControl, layers) {
         filter: pullNLTeams
     }).addTo(map);
 
+    //add NL layer to search control layer
     layers.addLayer(NL_LAYER)
 
     //add NL layer to Overlay section of layer control widget
@@ -100,6 +104,7 @@ function createALSymbols(data, map, layerControl, layers) {
         filter: pullALTeams
     }).addTo(map);
 
+    //add AL layer to search control layer
     layers.addLayer(AL_LAYER)
 
     //add AL layer to Overlay section of layer control widget
