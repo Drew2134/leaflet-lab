@@ -49,17 +49,16 @@ function createMap() {
     })
     .addTo(MAP);
 
+    addSearchControl(MAP, layerControl)
     //call initial data gather function for symbols
-    getData(MAP, layerControl, function() {
-        addSearchControl(MAP)
-    });
+    //getData(MAP, layerControl);
 
     //call function to add map title
     addMapTitle(MAP);
 };
 
 //function to import MLB geoJSON data
-function getData(map, layerControl, callback) {
+function getData(map, layerControl) {
     $.ajax("data/MLBStadiumsData.geojson", {
         dataType: "json",
         success: function(response) {
@@ -68,8 +67,6 @@ function getData(map, layerControl, callback) {
             createALSymbols(response, map, layerControl);
         }
     });
-
-    callback();
 };
 
 //function to add circle markers for NL teams
@@ -246,16 +243,13 @@ window.onresize = function(event) {
     $("#infoText")[0].style.left = mapCenter;
 }
 
-function addSearchControl(map) {
+function addSearchControl(map, layerControl) {
 
-    var layers = [];
-    mapParams.map.eachLayer(function(layer) {
-        console.log(layer)
-    })
+    var layers = getData(map, layerControl)
     
     var searchControl = new L.Control.Search({
         position:'topleft',
-        layer: null, //need to attach to existing layers
+        layer: layers, //need to attach to existing layers
         initial: false,
         zoom: 12,
         marker: false
