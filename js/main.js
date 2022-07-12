@@ -249,10 +249,9 @@ window.onresize = function(event) {
 function addSearchControl(map) {
 
     var layers = [];
-    console.log(mapParams.map.eachLayer(function(layer) {
+    mapParams.map.eachLayer(function(layer) {
         console.log(layer)
-    }
-    ))
+    })
     
     var searchControl = new L.Control.Search({
         position:'topleft',
