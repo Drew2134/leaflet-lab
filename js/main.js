@@ -250,11 +250,9 @@ function addSearchControl(map) {
 
     var layers = [];
     map.eachLayer(function(layer) {
-        if (!(layer instanceof L.tileLayer)) {
-            layers.push(layer);
-            console.log(layer)
-        }
-    })
+        layers.push(layer);
+        console.log(layer)
+})
     console.log(layers)
     
     var searchControl = new L.Control.Search({
