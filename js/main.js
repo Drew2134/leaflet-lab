@@ -54,6 +54,17 @@ function createMap() {
 
     //call function to add map title
     addMapTitle(MAP);
+
+    var controlSearch = new L.Control.Search({
+		position:'topleft',		
+		layer: null,
+		initial: false,
+		zoom: 12,
+		marker: false
+	});
+
+	MAP.addControl( controlSearch );
+
 };
 
 //function to import MLB geoJSON data
