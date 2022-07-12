@@ -40,6 +40,7 @@ function createMap() {
     var searchLayers = new L.LayerGroup();
     var searchControl = new L.Control.Search({
         position:'topleft',
+        propertyName: "Team",
         layer: searchLayers, //need to attach to existing layers
         initial: false,
         zoom: 12,
