@@ -204,6 +204,7 @@ function updatePropSymbols() {
     });
 }
 
+//add a custom map control to hold div with map title
 function addMapTitle(map) {
     L.Control.textbox = L.Control.extend({
 		onAdd: function(map) {
