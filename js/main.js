@@ -257,7 +257,7 @@ function addSearchControl(map) {
     
     var searchControl = new L.Control.Search({
         position:'topleft',
-        layer: layers, //need to attach to existing layers
+        layer: null, //need to attach to existing layers
         initial: false,
         zoom: 12,
         marker: false
